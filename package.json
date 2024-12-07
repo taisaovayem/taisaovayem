@@ -7,9 +7,11 @@
     "copy-assets": "cp .nojekyll docs/.nojekyll",
     "build": "next build && npm run copy-assets",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "release": "npm run build && git add -f ./docs"
   },
   "dependencies": {
+    "@next/third-parties": "15.0.4",
     "@radix-ui/react-icons": "1.3.2",
     "@radix-ui/themes": "3.1.6",
     "@types/lodash": "4.17.13",

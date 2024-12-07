@@ -5,6 +5,7 @@ import { HomeIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { QuickNavigate } from "@/components";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -53,6 +54,7 @@ export default function RootLayout({
           <QuickNavigate />
         </Theme>
       </body>
+      <GoogleAnalytics gaId="G-RZ3CZ4ZFLL" />
     </html>
   );
 }
