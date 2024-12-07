@@ -33,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Theme>
-          <Container size="4" className="p-4 md:p-0">
+          <Container size="4" className="p-4 xl:p-0">
             <main className="pt-6">{children}</main>
             <footer className="w-full py-8 grid gap-4 grid-flow-col auto-cols-max">
               <Link href="/">

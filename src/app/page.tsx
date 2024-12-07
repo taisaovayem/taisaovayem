@@ -37,9 +37,9 @@ export default async function Page() {
         <Heading className="mb-4" as="h2">
           Danh mục
         </Heading>
-        <Flex gap="2">
+        <Flex gap="2" wrap="wrap">
           {categoies.map((categoryName) => (
-            <Badge key={categoryName} color="blue">
+            <Badge key={categoryName} color="green">
               <Link href={`/category/${createSlug(categoryName)}`}>
                 {categoryName}
               </Link>
@@ -51,9 +51,9 @@ export default async function Page() {
         <Heading className="mb-4" as="h2">
           Tag
         </Heading>
-        <Flex gap="2">
+        <Flex gap="2" wrap="wrap">
           {tags.map((tagName) => (
-            <Badge key={tagName} color="blue">
+            <Badge key={tagName} color="pink">
               <Link href={`/tag/${createSlug(tagName)}`}>{tagName}</Link>
             </Badge>
           ))}
