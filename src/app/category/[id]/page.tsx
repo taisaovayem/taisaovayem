@@ -2,7 +2,9 @@ import { getAllPostData } from "@/helpers";
 import uniq from "lodash/uniq";
 import flattenDeep from "lodash/flattenDeep";
 import { createSlug } from "@/helpers/string";
-import Link from "next/link";
+import { Metadata } from "next";
+import { Badge, Box, Grid, Heading } from "@radix-ui/themes";
+import { PostCard } from "@/components";
 
 type CategoryProps = {
   id: string;
@@ -22,6 +24,26 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<CategoryProps>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const allPostData = await getAllPostData();
+  const filterdPost = allPostData.filter((postData) =>
+    postData.category
+      .map((categoryName) => createSlug(categoryName))
+      .includes(id)
+  );
+  const tagNameTitle = filterdPost[0].tag.find(
+    (categoryName) => createSlug(categoryName) === id
+  );
+  return {
+    title: "Danh mục: " + tagNameTitle,
+  };
+}
+
 export default async function Category({
   params,
 }: {
@@ -39,14 +61,21 @@ export default async function Category({
   );
   return (
     <>
-      <h1>{categoryNameTitle}</h1>
-      <ul>
+      <Box className="bg-gray-100 rounded-xl p-9">
+        <Badge className="mb-4">Tag</Badge>
+        <Heading>{categoryNameTitle}</Heading>
+      </Box>
+      <Box className="mb-4"></Box>
+      <Grid columns="3" gap="4">
         {filterdPost.map((postData) => (
-          <li key={postData.slug}>
-            <Link href={`/post/${postData.slug}`}>{postData.title}</Link>
-          </li>
+          <PostCard
+            key={postData.slug}
+            title={postData.title}
+            slug={postData.slug}
+            description={postData.description}
+          />
         ))}
-      </ul>
+      </Grid>
     </>
   );
 }

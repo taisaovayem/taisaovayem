@@ -4,6 +4,13 @@ import flattenDepth from "lodash/flatMapDeep";
 import uniq from "lodash/uniq";
 import { flatten } from "lodash";
 import { createSlug } from "@/helpers/string";
+import { Badge, Box, Flex, Grid, Heading } from "@radix-ui/themes";
+import { PostList } from "@/components";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Tại sao vậy em?",
+  description: "Cuộc sống em khó khăn lắm hả?",
+};
 
 export default async function Page() {
   const allPostData = await getAllPostData();
@@ -19,36 +26,38 @@ export default async function Page() {
 
   return (
     <>
-      <article>
-        <ul>
-          {postSorted.map((post) => (
-            <ul key={post.slug}>
-              <Link href={`/post/${post.slug}`}>{post.title}</Link>
-            </ul>
-          ))}
-        </ul>
+      <Box className="bg-gray-100 rounded-xl mb-8 p-9">
+        <Heading className="mb-4">Tai sao vậy em?</Heading>
+        <Badge className="mb-4" color="pink">Cuộc sống của em khó khăn lắm hả?</Badge>
+      </Box>
+      <article className="mb-8 -mx-2">
+        <PostList posts={postSorted} />
       </article>
-      <article>
-        <h1>Category</h1>
-        <ul>
+      <article className="py-4">
+        <Heading className="mb-4" as="h2">
+          Danh mục
+        </Heading>
+        <Flex gap="2">
           {categoies.map((categoryName) => (
-            <li key={categoryName}>
+            <Badge key={categoryName} color="blue">
               <Link href={`/category/${createSlug(categoryName)}`}>
                 {categoryName}
               </Link>
-            </li>
+            </Badge>
           ))}
-        </ul>
+        </Flex>
       </article>
-      <article>
-        <h1>Tag</h1>
-        <ul>
+      <article className="py-4">
+        <Heading className="mb-4" as="h2">
+          Tag
+        </Heading>
+        <Flex gap="2">
           {tags.map((tagName) => (
-            <li key={tagName}>
+            <Badge key={tagName} color="blue">
               <Link href={`/tag/${createSlug(tagName)}`}>{tagName}</Link>
-            </li>
+            </Badge>
           ))}
-        </ul>
+        </Flex>
       </article>
     </>
   );

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import { Theme, Container, Link } from "@radix-ui/themes";
 import localFont from "next/font/local";
+import { HomeIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import "./globals.css";
+import "@radix-ui/themes/styles.css";
+import { QuickNavigate } from "@/components";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +32,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Theme>
+          <Container size="4" className="p-4 md:p-0">
+            <main className="pt-6">{children}</main>
+            <footer className="w-full py-8 grid gap-4 grid-flow-col auto-cols-max">
+              <Link href="/">
+                <span className="inline-block align-middle">
+                  <HomeIcon />
+                </span>{" "}
+                Trang chủ
+              </Link>
+              <Link href="https://github.com/tmthan/taisaovayem">
+                <span className="inline-block align-middle">
+                  <GitHubLogoIcon />
+                </span>{" "}
+                Đóng góp
+              </Link>
+            </footer>
+          </Container>
+          <QuickNavigate />
+        </Theme>
       </body>
     </html>
   );
