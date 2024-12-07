@@ -34,6 +34,15 @@ git add -f ./docs
 git push
 ```
 
+## Build docker
+```bash
+docker build -t taisaovayem .
+```
+
+```bash
+docker run --name some-nginx -d -p 8080:80 taisaovayem
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
