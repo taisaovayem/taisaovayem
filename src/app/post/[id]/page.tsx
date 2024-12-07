@@ -31,6 +31,7 @@ export async function generateMetadata({
   const post = await getPost(id);
   return {
     title: post.data.title,
+    description: post.html?.toString()?.replace(/<[^>]+>/g, ''),
   };
 }
 

@@ -7,6 +7,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import matter from "gray-matter";
 import { Value } from "vfile";
+import clip from "@/helpers/text-clipper"
 
 function getMdFileName(slug: string) {
   const mdFileName = slug.match(/^[0-9a-zA-Z_\-. ]+.(md|mdx)$/gim)
@@ -54,7 +55,7 @@ export async function getAllPostData() {
     allPostData.push({
       ...post.data,
       slug,
-      description: post.html,
+      description: clip(post.html?.toString(), 500, {html: true, maxLines: 5}),
     });
   }
   return allPostData;
