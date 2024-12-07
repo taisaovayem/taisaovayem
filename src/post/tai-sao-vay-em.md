@@ -10,4 +10,4 @@ tag:
     - Tại sao
     - Vì sao
 ---
-Tại sao vậy hả em?
+Cuộc sống của em khó khăn lắm hả?

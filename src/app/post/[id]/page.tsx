@@ -2,7 +2,10 @@ import { getPost } from "@/helpers";
 import fs from "fs";
 import { POST_DIRECTORY } from "@/constants";
 import Link from "next/link";
-import { createSlug } from "@/helpers/string";
+import { createSlug } from "@/helpers";
+import Head from "next/head";
+import { Heading, Flex, Badge, Box } from "@radix-ui/themes";
+import { Metadata } from "next";
 
 type PostProps = {
   id: string;
@@ -19,39 +22,56 @@ export async function generateStaticParams() {
   }
   return postList;
 }
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<PostProps>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const post = await getPost(id);
+  return {
+    title: post.data.title,
+  };
+}
 
 export default async function Post({ params }: { params: Promise<PostProps> }) {
   const { id } = await params;
   const post = await getPost(id);
   return (
     <>
-      <article className="w-full">
-        <header>
-          <h1>{post.data.title}</h1>
-        </header>
-        <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+      <article className="w-full mb-8">
+        <Box className="bg-gray-100 rounded-xl mb-8 p-9">
+          <header className="mb-6">
+            <Heading>{post.data.title}</Heading>
+          </header>
+          <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+        </Box>
       </article>
-      <article>
-        Danh mục:
-        <ul className="list-none">
+      <article className="py-4">
+        <Heading className="mb-4" as="h2">
+          Danh mục
+        </Heading>
+        <Flex gap="2">
           {post.data.category.map((categoryName) => (
-            <li key={categoryName}>
+            <Badge key={categoryName} color="blue">
               <Link href={`/category/${createSlug(categoryName)}`}>
                 {categoryName}
               </Link>
-            </li>
+            </Badge>
           ))}
-        </ul>
+        </Flex>
       </article>
-      <article>
-        Tag:
-        <ul className="list-none">
+      <article className="py-4">
+        <Heading className="mb-4" as="h2">
+          Tag
+        </Heading>
+        <Flex gap="2">
           {post.data.tag.map((tagName) => (
-            <li key={tagName}>
+            <Badge key={tagName} color="blue">
               <Link href={`/tag/${createSlug(tagName)}`}>{tagName}</Link>
-            </li>
+            </Badge>
           ))}
-        </ul>
+        </Flex>
       </article>
     </>
   );

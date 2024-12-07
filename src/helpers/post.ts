@@ -7,6 +7,7 @@ import remarkRehype from "remark-rehype";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import matter from "gray-matter";
+import { Value } from "vfile"
 
 function getMdFileName(slug: string) {
   const mdFileName = slug.match(/^[0-9a-zA-Z_\-. ]+.(md|mdx)$/gim)
@@ -21,9 +22,15 @@ type PostData = {
   createdAt: string;
   tag: string[];
   slug: string;
+  description: Value;
 };
 
-export async function getPost(slug: string) {
+type Post = {
+  html: Value,
+  data: PostData,
+}
+
+export async function getPost(slug: string): Promise<Post> {
   const mdFileName = getMdFileName(slug);
   const postPath = path.join(POST_DIRECTORY, mdFileName);
   const postFileContent = fs.readFileSync(postPath, ENCODING);
@@ -49,6 +56,7 @@ export async function getAllPostData() {
     allPostData.push({
       ...post.data,
       slug,
+      description: post.html
     });
   }
   return allPostData;
