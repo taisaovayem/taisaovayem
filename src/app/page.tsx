@@ -26,7 +26,7 @@ export default async function Page() {
 
   return (
     <>
-      <Box className="bg-gray-100 rounded-xl mb-8 p-9">
+      <Box className="bg-gray-100 rounded-xl mb-2 p-9">
         <Heading className="mb-4">Tai sao vậy em?</Heading>
         <Badge className="mb-4" color="pink">Cuộc sống của em khó khăn lắm hả?</Badge>
       </Box>

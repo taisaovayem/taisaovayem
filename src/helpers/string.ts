@@ -1,4 +1,4 @@
-function removeAccentsLetterOnly(str: string) {
+export function removeAccentsLetterOnly(str: string) {
   if (!str) return "";
   return str
     .normalize("NFD")

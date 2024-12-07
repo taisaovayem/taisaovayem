@@ -38,6 +38,11 @@ export async function generateMetadata({
 export default async function Post({ params }: { params: Promise<PostProps> }) {
   const { id } = await params;
   const post = await getPost(id);
+
+  function copyTitle() {
+    navigator.clipboard.writeText(post.data.title);
+  }
+
   return (
     <>
       <article className="w-full mb-8">

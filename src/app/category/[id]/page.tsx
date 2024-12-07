@@ -61,12 +61,13 @@ export default async function Category({
   );
   return (
     <>
-      <Box className="bg-gray-100 rounded-xl p-9">
+      <Box className="bg-gray-100 rounded-xl mb-2 p-9">
         <Badge className="mb-4">Danh mục</Badge>
         <Heading>{categoryNameTitle}</Heading>
       </Box>
-      <Box className="mb-4"></Box>
-      <PostList posts={filterdPost} />
+      <Box className="-mx-2">
+        <PostList posts={filterdPost} />
+      </Box>
     </>
   );
 }
