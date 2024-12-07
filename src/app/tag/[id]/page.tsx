@@ -4,7 +4,7 @@ import flattenDeep from "lodash/flattenDeep";
 import { createSlug } from "@/helpers/string";
 import { Badge, Box, Heading, Grid, Card, Link, Text } from "@radix-ui/themes";
 import { Metadata } from "next";
-import { PostCard } from "@/components";
+import { PostList } from "@/components";
 
 type TagProps = {
   id: string;
@@ -62,16 +62,7 @@ export default async function Category({
         <Heading>{tagNameTitle}</Heading>
       </Box>
       <Box className="mb-4"></Box>
-      <Grid columns="3" gap="4">
-        {filterdPost.map((postData) => (
-          <PostCard
-            key={postData.slug}
-            title={postData.title}
-            slug={postData.slug}
-            description={postData.description}
-          />
-        ))}
-      </Grid>
+      <PostList posts={filterdPost} />
     </>
   );
 }
