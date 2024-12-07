@@ -44,16 +44,16 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
           <header className="mb-6">
             <Heading>{post.data.title}</Heading>
           </header>
-          <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} className="text-gray-500"></div>
         </Box>
       </article>
       <article className="py-4">
-        <Heading className="mb-4" as="h2">
+        <Heading className="mb-4" as="h2" size="2">
           Danh mục
         </Heading>
-        <Flex gap="2">
+        <Flex gap="2" wrap="wrap">
           {post.data.category.map((categoryName) => (
-            <Badge key={categoryName} color="blue">
+            <Badge key={categoryName} color="green">
               <Link href={`/category/${createSlug(categoryName)}`}>
                 {categoryName}
               </Link>
@@ -62,12 +62,12 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
         </Flex>
       </article>
       <article className="py-4">
-        <Heading className="mb-4" as="h2">
+        <Heading className="mb-4" as="h2" size="2">
           Tag
         </Heading>
-        <Flex gap="2">
+        <Flex gap="2" wrap="wrap">
           {post.data.tag.map((tagName) => (
-            <Badge key={tagName} color="blue">
+            <Badge key={tagName} color="pink">
               <Link href={`/tag/${createSlug(tagName)}`}>{tagName}</Link>
             </Badge>
           ))}

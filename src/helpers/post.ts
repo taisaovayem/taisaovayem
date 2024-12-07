@@ -4,10 +4,9 @@ import { ENCODING, POST_DIRECTORY } from "@/constants";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import matter from "gray-matter";
-import { Value } from "vfile"
+import { Value } from "vfile";
 
 function getMdFileName(slug: string) {
   const mdFileName = slug.match(/^[0-9a-zA-Z_\-. ]+.(md|mdx)$/gim)
@@ -26,9 +25,9 @@ type PostData = {
 };
 
 type Post = {
-  html: Value,
-  data: PostData,
-}
+  html: Value;
+  data: PostData;
+};
 
 export async function getPost(slug: string): Promise<Post> {
   const mdFileName = getMdFileName(slug);
@@ -37,9 +36,8 @@ export async function getPost(slug: string): Promise<Post> {
   const matterResult = matter(postFileContent);
   const postHtml = await unified()
     .use(remarkParse) // Convert into markdown AST
-    .use(remarkRehype) // Transform to HTML AST
-    .use(rehypeSanitize) // Sanitize HTML input
-    .use(rehypeStringify) // Convert AST into serialized HTML
+    .use(remarkRehype, { allowDangerousHtml: true }) // Transform to HTML AST
+    .use(rehypeStringify, { allowDangerousHtml: true }) // Convert AST into serialized HTML
     .process(matterResult.content);
   return {
     html: postHtml.value,
@@ -56,7 +54,7 @@ export async function getAllPostData() {
     allPostData.push({
       ...post.data,
       slug,
-      description: post.html
+      description: post.html,
     });
   }
   return allPostData;

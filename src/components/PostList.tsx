@@ -10,7 +10,7 @@ export function PostList({ posts }: PostListProps) {
   return (
     <Masonry>
       {posts.map((post) => (
-        <div className="w-1/3 p-2" key={post.slug}>
+        <div className="w-full sm:w-1/2 lg:w-1/3 p-2" key={post.slug}>
           <PostCard key={post.slug} {...post} />
         </div>
       ))}
