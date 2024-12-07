@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "copy-asset": "mkdir ./docs/docs &&  cp -r ./docs/_next docs/docs",
-    "build": "next build && npm run copy-asset",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

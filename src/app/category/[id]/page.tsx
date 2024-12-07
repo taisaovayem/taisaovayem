@@ -36,11 +36,11 @@ export async function generateMetadata({
       .map((categoryName) => createSlug(categoryName))
       .includes(id)
   );
-  const tagNameTitle = filterdPost[0].tag.find(
+  const categoryNameTitle = filterdPost[0].category.find(
     (categoryName) => createSlug(categoryName) === id
   );
   return {
-    title: "Danh mục: " + tagNameTitle,
+    title: "Danh mục: " + categoryNameTitle,
   };
 }
 
@@ -62,7 +62,7 @@ export default async function Category({
   return (
     <>
       <Box className="bg-gray-100 rounded-xl p-9">
-        <Badge className="mb-4">Tag</Badge>
+        <Badge className="mb-4">Danh mục</Badge>
         <Heading>{categoryNameTitle}</Heading>
       </Box>
       <Box className="mb-4"></Box>
