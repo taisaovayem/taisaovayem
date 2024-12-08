@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "copy-assets": "cp .nojekyll docs/.nojekyll",
-    "build": "next build && npm run copy-assets",
+    "copy-nojekyll": "cp .nojekyll docs/.nojekyll",
+    "copy-cname": "cp CNAME docs/CNAME",
+    "build": "next build && npm run copy-nojekyll && npm run copy-cname",
     "start": "next start",
     "lint": "next lint",
     "release": "npm run build && git add -f ./docs"
