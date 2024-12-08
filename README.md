@@ -40,7 +40,6 @@ Một số thông tin cần lưu ý:
  - `title`: Tên bài viết
  - `category`: Danh mục, có thể tạo thêm nhiều danh mục vào bài viết
  - `tag`: Tag, có thể thêm nhiều tag vào bài viết
- - `createdAd`: Ngày tạo, sử dụng để sắp xếp. Định dạng `YYYY-MM-DD`
  
  #### Nhúng ảnh
  Để nhúng hình ảnh, vui lòng tải ảnh về và bỏ vào thư mục `public`, không nên găn trực tiếp từ link ảnh bên ngoài vì có thể ảnh sẽ bị xoá trong tương lai.

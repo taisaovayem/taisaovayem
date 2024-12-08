@@ -4,6 +4,7 @@ import PostCard, { PostCardProps } from "./PostCard";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Box, TextField } from "@radix-ui/themes";
 import { removeAccentsLetterOnly } from "@/helpers/string";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 type PostListProps = {
   posts: PostCardProps[];
@@ -40,7 +41,14 @@ export function PostList({ posts }: PostListProps) {
           placeholder="Tìm kiếm"
           value={searchText}
           onChange={handleSearch}
-        />
+          radius="full"
+          color="indigo"
+          variant="soft"
+        >
+          <TextField.Slot>
+            <MagnifyingGlassIcon height="16" width="16" />
+          </TextField.Slot>
+        </TextField.Root>
       </Box>
       <Masonry>
         {postList.map((post) => (

@@ -9,7 +9,7 @@ export type PostCardProps = {
 
 export function PostCard({ slug, title, description }: PostCardProps) {
   return (
-    <Card>
+    <Card className="shadow-lg">
       <Link href={`/post/${slug}`}>
         <Text as="div" size="2" weight="bold" className="mb-4">
           {title}
