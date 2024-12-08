@@ -41,6 +41,7 @@ export async function generateMetadata({
   );
   return {
     title: "Danh mục: " + categoryNameTitle,
+    description: categoryNameTitle,
   };
 }
 

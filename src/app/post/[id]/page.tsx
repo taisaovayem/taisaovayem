@@ -1,4 +1,4 @@
-import { getPost } from "@/helpers";
+import { getPost, getThumbnail } from "@/helpers";
 import fs from "fs";
 import { POST_DIRECTORY } from "@/constants";
 import Link from "next/link";
@@ -6,6 +6,7 @@ import { createSlug } from "@/helpers";
 import { Heading, Flex, Badge, Box } from "@radix-ui/themes";
 import { Metadata } from "next";
 import { PostTitle } from "@/components";
+import set from "lodash/set";
 
 type PostProps = {
   id: string;
@@ -29,10 +30,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await params;
   const post = await getPost(id);
-  return {
+  const thumbnail = getThumbnail(post);
+  const metaData: Metadata = {
     title: post.data.title,
-    description: post.html?.toString()?.replace(/<[^>]+>/g, ''),
+    description:
+      post.html?.toString()?.replace(/<[^>]+>/g, "") || post.data.title,
+    openGraph: {
+      title: post.data.title,
+      description:
+        post.html?.toString()?.replace(/<[^>]+>/g, "") || post.data.title,
+    },
   };
+  if (thumbnail && thumbnail?.length) {
+    set(metaData, ["openGraph", "images"], thumbnail[0]);
+  }
+  return metaData;
 }
 
 export default async function Post({ params }: { params: Promise<PostProps> }) {
@@ -46,7 +58,10 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
           <header className="mb-6">
             <PostTitle>{post.data.title}</PostTitle>
           </header>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} className="text-gray-500"></div>
+          <div
+            dangerouslySetInnerHTML={{ __html: post.html }}
+            className="text-gray-500"
+          ></div>
         </Box>
       </article>
       <article className="py-4">

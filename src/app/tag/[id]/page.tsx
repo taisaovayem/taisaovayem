@@ -39,6 +39,7 @@ export async function generateMetadata({
   );
   return {
     title: "Tag: " + tagNameTitle,
+    description: tagNameTitle,
   };
 }
 

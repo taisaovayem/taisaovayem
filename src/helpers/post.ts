@@ -62,5 +62,18 @@ export async function getAllPostData() {
       }),
     });
   }
-  return allPostData.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  return allPostData.sort(
+    (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+  );
+}
+
+export function getThumbnail(post: Post) {
+  const postContentHtml = post.html?.toString();
+  if (!postContentHtml) {
+    return null;
+  }
+  const sources = postContentHtml
+    ?.match(/<img [^>]*src="[^"]*"[^>]*>/gm)
+    ?.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
+  return sources;
 }
