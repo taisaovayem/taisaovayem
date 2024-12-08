@@ -2,7 +2,6 @@
 title: Nước trong quá
 category: 
     - 'Đạo lý'
-createdAt: '2024-12-07'
 tag:
     - hungnk86
     - xl86

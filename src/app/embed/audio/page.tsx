@@ -1,6 +1,6 @@
 "use client";
 import AudioPlayer from "@/components/AudioPlayer";
-import { Box, Code, Text } from "@radix-ui/themes";
+import { Box, Code, Text, Spinner } from "@radix-ui/themes";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
@@ -23,7 +23,7 @@ function EmmedAudio() {
 
 export default function EmmedAudioPage() {
   return (
-    <Suspense>
+    <Suspense fallback={<Spinner />}>
       <EmmedAudio />
     </Suspense>
   );

@@ -7,7 +7,7 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import matter from "gray-matter";
 import { Value } from "vfile";
-import clip from "@/helpers/text-clipper"
+import clip from "@/helpers/text-clipper";
 
 function getMdFileName(slug: string) {
   const mdFileName = slug.match(/^[0-9a-zA-Z_\-. ]+.(md|mdx)$/gim)
@@ -19,7 +19,7 @@ function getMdFileName(slug: string) {
 type PostData = {
   title: string;
   category: string[];
-  createdAt: string;
+  createdAt: Date;
   tag: string[];
   slug: string;
   description: Value;
@@ -34,6 +34,7 @@ export async function getPost(slug: string): Promise<Post> {
   const mdFileName = getMdFileName(slug);
   const postPath = path.join(POST_DIRECTORY, mdFileName);
   const postFileContent = fs.readFileSync(postPath, ENCODING);
+  const stat = fs.statSync(postPath);
   const matterResult = matter(postFileContent);
   const postHtml = await unified()
     .use(remarkParse) // Convert into markdown AST
@@ -42,7 +43,7 @@ export async function getPost(slug: string): Promise<Post> {
     .process(matterResult.content);
   return {
     html: postHtml.value,
-    data: matterResult.data as PostData,
+    data: { ...matterResult.data, createdAt: stat.birthtime } as PostData,
   };
 }
 
@@ -55,8 +56,11 @@ export async function getAllPostData() {
     allPostData.push({
       ...post.data,
       slug,
-      description: clip(post.html?.toString(), 500, {html: true, maxLines: 5}),
+      description: clip(post.html?.toString(), 500, {
+        html: true,
+        maxLines: 5,
+      }),
     });
   }
-  return allPostData;
+  return allPostData.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 }

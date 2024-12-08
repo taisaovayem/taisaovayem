@@ -3,9 +3,9 @@ import fs from "fs";
 import { POST_DIRECTORY } from "@/constants";
 import Link from "next/link";
 import { createSlug } from "@/helpers";
-import Head from "next/head";
 import { Heading, Flex, Badge, Box } from "@radix-ui/themes";
 import { Metadata } from "next";
+import { PostTitle } from "@/components";
 
 type PostProps = {
   id: string;
@@ -39,16 +39,12 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
   const { id } = await params;
   const post = await getPost(id);
 
-  function copyTitle() {
-    navigator.clipboard.writeText(post.data.title);
-  }
-
   return (
     <>
       <article className="w-full mb-8">
         <Box className="bg-gray-100 rounded-xl mb-8 p-9">
           <header className="mb-6">
-            <Heading>{post.data.title}</Heading>
+            <PostTitle>{post.data.title}</PostTitle>
           </header>
           <div dangerouslySetInnerHTML={{ __html: post.html }} className="text-gray-500"></div>
         </Box>

@@ -2,7 +2,6 @@
 title: Mùa hè năm đó tôi đã trở thành tên hề nổi tiếng nhất thị trấn
 category: 
     - 'Tôi, thằng bạn, ông anh'
-createdAt: '2024-12-07'
 tag:
     - Joker
     - Mùa hè

@@ -2,7 +2,6 @@
 title: Người bạn mà anh nói có phải là chính bản thân anh?
 category: 
     - 'Tôi, thằng bạn, ông anh'
-createdAt: '2024-12-07'
 tag:
     - Thằng bạn, ông anh, đứa bà con
 ---

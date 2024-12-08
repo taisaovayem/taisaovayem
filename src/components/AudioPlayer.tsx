@@ -26,7 +26,7 @@ export function AudioPlayer({ source, color }: AudioPlayerProps) {
 
   return isClient ? (
     <button
-      className={`w-[88px] h-[81px] rounded-full ${styles["play-button"]}`}
+      className={`w-[88px] h-[82px] rounded-full ${styles["play-button"]}`}
       style={customStyle}
       onClick={playAudio}
     ></button>

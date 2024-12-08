@@ -3,7 +3,6 @@ title: Âm thanh onii-chan
 category: 
     - 'Âm thanh'
     - Wibu
-createdAt: '2024-12-07'
 tag:
     - Wibu
     - 'Onii-chan'
