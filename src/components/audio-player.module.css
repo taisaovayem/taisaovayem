@@ -1,0 +1,8 @@
+.play-button {
+    background-image: url('/audio-button.webp');
+    background-position: -8px -9px;
+}
+
+.play-button:active {
+    background-position: -112px -9px;
+}
