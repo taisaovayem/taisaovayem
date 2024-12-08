@@ -5,8 +5,9 @@ import uniq from "lodash/uniq";
 import { flatten } from "lodash";
 import { createSlug } from "@/helpers/string";
 import { Badge, Box, Flex, Grid, Heading } from "@radix-ui/themes";
-import { PostList } from "@/components";
+import { Footer, PostList } from "@/components";
 import { Metadata } from "next";
+import { CommontLayout } from "@/components/CommonLayout";
 export const metadata: Metadata = {
   title: "Tại sao vậy em?",
   description: "Cuộc sống em khó khăn lắm hả?",
@@ -25,10 +26,12 @@ export default async function Page() {
   );
 
   return (
-    <>
+    <CommontLayout>
       <Box className="bg-gray-100 rounded-xl mb-2 p-9">
         <Heading className="mb-4">Tai sao vậy em?</Heading>
-        <Badge className="mb-4" color="pink">Cuộc sống của em khó khăn lắm hả?</Badge>
+        <Badge className="mb-4" color="pink">
+          Cuộc sống của em khó khăn lắm hả?
+        </Badge>
       </Box>
       <article className="mb-8 -mx-2">
         <PostList posts={postSorted} />
@@ -59,6 +62,6 @@ export default async function Page() {
           ))}
         </Flex>
       </article>
-    </>
+    </CommontLayout>
   );
 }

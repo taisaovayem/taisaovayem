@@ -1,5 +1,5 @@
 ---
-title: Nobita à, khi nào cậu cảm thấy cuộc sống khoa khăn quá thì hãy mở ra nhé
+title: Nobita à, khi nào cậu cảm thấy cuộc sống khó khăn quá thì hãy mở ra nhé
 category: 
     - 'Quà tặng cuộc sống'
 createdAt: '2024-12-07'
