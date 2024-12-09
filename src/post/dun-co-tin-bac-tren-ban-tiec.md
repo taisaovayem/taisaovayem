@@ -5,4 +5,5 @@ category:
 tag:
   - Anh em cc tình nghĩa xl
 ---
-🥰
+
+![đừn có tìn bạc trên bàn tiệc](/nguoi-dan-ong-that-vong.jpg "đừn có tìn bạc trên bàn tiệc")
