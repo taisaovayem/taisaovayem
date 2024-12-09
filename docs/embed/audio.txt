@@ -1,19 +1,21 @@
-4:"$Sreact.fragment"
-5:I[5244,[],""]
-6:I[3866,[],""]
-7:I[766,["177","static/chunks/app/layout-48061477677e3c67.js"],"GoogleAnalytics"]
-8:I[7033,[],"ClientPageRoot"]
-9:I[7830,["480","static/chunks/480-344da52c74c3f1cb.js","445","static/chunks/app/embed/audio/page-88ce3d7d6b8faa84.js"],"default"]
-c:I[6213,[],"OutletBoundary"]
-e:I[6213,[],"MetadataBoundary"]
-10:I[6213,[],"ViewportBoundary"]
-12:I[4835,[],""]
-1:HL["/_next/static/css/68fc624de5c659e8.css","style"]
-2:HL["/_next/static/css/de8ebef075a29403.css","style"]
-3:HL["/_next/static/css/c53595e0b54ecccb.css","style"]
-0:{"P":null,"b":"DTf3Zm2jj8lEpOWh2eIKR","p":"","c":["","embed","audio"],"i":false,"f":[[["",{"children":["embed",{"children":["audio",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$4","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/68fc624de5c659e8.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/de8ebef075a29403.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"vi","children":[["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-transparent","children":["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$","div",null,{"children":[["$","span",null,{"data-accent-color":"pink","data-radius":"$undefined","children":"Lỗi","style":"$undefined","ref":"$undefined","className":"rt-reset rt-Badge rt-r-size-1 rt-variant-soft mb-4"}],["$","h1",null,{"children":"Không tìm thấy trang","data-accent-color":"$undefined","style":"$undefined","ref":null,"className":"rt-Heading rt-r-size-6"}]],"style":"$undefined","ref":"$undefined","className":"rt-Box bg-gray-100 rounded-xl p-9"}],"notFoundStyles":[]}]}],["$","$L7",null,{"gaId":"G-RZ3CZ4ZFLL"}]]}]]}],{"children":["embed",["$","$4","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","embed","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":["audio",["$","$4","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","segmentPath":["children","embed","children","audio","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":["__PAGE__",["$","$4","c",{"children":[["$","$L8",null,{"Component":"$9","searchParams":{},"params":{},"promises":["$@a","$@b"]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/c53595e0b54ecccb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Lc",null,{"children":"$Ld"}]]}],{},null]},null]},null]},null],["$","$4","h",{"children":[null,["$","$4","5Wu6G0uLoqt83wWr6ZFw-",{"children":[["$","$Le",null,{"children":"$Lf"}],["$","$L10",null,{"children":"$L11"}],null]}]]}]]],"m":"$undefined","G":["$12","$undefined"],"s":false,"S":true}
-a:{}
-b:{}
-11:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-f:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Tại sao vậy em?"}],["$","meta","2",{"name":"description","content":"Tại sao vậy em?"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"128x128"}]]
-d:null
+6:"$Sreact.fragment"
+7:I[5244,[],""]
+8:I[3866,[],""]
+9:I[766,["177","static/chunks/app/layout-aeac96ff27fe4e72.js"],"GoogleAnalytics"]
+a:I[7033,[],"ClientPageRoot"]
+b:I[7830,["480","static/chunks/480-344da52c74c3f1cb.js","445","static/chunks/app/embed/audio/page-de1c13d79f99bc28.js"],"default"]
+e:I[6213,[],"OutletBoundary"]
+10:I[6213,[],"MetadataBoundary"]
+12:I[6213,[],"ViewportBoundary"]
+14:I[4835,[],""]
+1:HL["/_next/static/media/4473ecc91f70f139-s.p.woff","font",{"crossOrigin":"","type":"font/woff"}]
+2:HL["/_next/static/media/463dafcda517f24f-s.p.woff","font",{"crossOrigin":"","type":"font/woff"}]
+3:HL["/_next/static/css/68fc624de5c659e8.css","style"]
+4:HL["/_next/static/css/de8ebef075a29403.css","style"]
+5:HL["/_next/static/css/c53595e0b54ecccb.css","style"]
+0:{"P":null,"b":"rhauFg5MsaC-yu8DhSW3N","p":"","c":["","embed","audio"],"i":false,"f":[[["",{"children":["embed",{"children":["audio",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$6","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/68fc624de5c659e8.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/css/de8ebef075a29403.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"vi","children":[["$","body",null,{"className":"__variable_1e4310 __variable_c3aa02 antialiased bg-transparent","children":["$","$L7",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":["$","div",null,{"children":[["$","span",null,{"data-accent-color":"pink","data-radius":"$undefined","children":"Lỗi","style":"$undefined","ref":"$undefined","className":"rt-reset rt-Badge rt-r-size-1 rt-variant-soft mb-4"}],["$","h1",null,{"children":"Không tìm thấy trang","data-accent-color":"$undefined","style":"$undefined","ref":null,"className":"rt-Heading rt-r-size-6"}]],"style":"$undefined","ref":"$undefined","className":"rt-Box bg-gray-100 rounded-xl p-9"}],"notFoundStyles":[]}]}],["$","$L9",null,{"gaId":"G-RZ3CZ4ZFLL"}]]}]]}],{"children":["embed",["$","$6","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","segmentPath":["children","embed","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":["audio",["$","$6","c",{"children":[null,["$","$L7",null,{"parallelRouterKey":"children","segmentPath":["children","embed","children","audio","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L8",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]]}],{"children":["__PAGE__",["$","$6","c",{"children":[["$","$La",null,{"Component":"$b","searchParams":{},"params":{},"promises":["$@c","$@d"]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/c53595e0b54ecccb.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Le",null,{"children":"$Lf"}]]}],{},null]},null]},null]},null],["$","$6","h",{"children":[null,["$","$6","eOKDbZaEN7LsBDf4V0A4W",{"children":[["$","$L10",null,{"children":"$L11"}],["$","$L12",null,{"children":"$L13"}],["$","meta",null,{"name":"next-size-adjust"}]]}]]}]]],"m":"$undefined","G":["$14","$undefined"],"s":false,"S":true}
+c:{}
+d:{}
+13:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+11:[["$","meta","0",{"charSet":"utf-8"}],["$","title","1",{"children":"Tại sao vậy em?"}],["$","meta","2",{"name":"description","content":"Tại sao vậy em?"}],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"128x128"}]]
+f:null
