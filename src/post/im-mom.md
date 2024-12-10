@@ -1,7 +1,7 @@
 ---
 title: Im mồm
 category: 
-    - Nơi tình yêu kết thúckếtthú
+    - Nơi tình yêu kết thúc
 tag:
     - Nín
 ---
