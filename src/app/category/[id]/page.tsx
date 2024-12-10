@@ -40,7 +40,7 @@ export async function generateMetadata({
     (categoryName) => createSlug(categoryName) === id
   );
   return {
-    title: "Danh mục: " + categoryNameTitle,
+    title: "Chuyên mục: " + categoryNameTitle,
     description: categoryNameTitle,
   };
 }
@@ -63,7 +63,7 @@ export default async function Category({
   return (
     <>
       <Box className="bg-gray-100 rounded-xl mb-2 p-9">
-        <Badge className="mb-4">Danh mục</Badge>
+        <Badge className="mb-4">Chuyên mục</Badge>
         <Heading>{categoryNameTitle}</Heading>
       </Box>
       <Box className="-mx-2">
