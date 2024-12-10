@@ -4,7 +4,6 @@ import { Box, IconButton } from "@radix-ui/themes";
 import { useRef } from "react";
 import PostTitle from "./PostTitle";
 import * as htmlToImage from "html-to-image";
-import PostCard from "./PostCard";
 import { CopyIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import ClipboardContent from "./ClipboardContent";
@@ -65,10 +64,8 @@ export function PostContent({ post }: PostContentProps) {
         </div>
       </Box>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
-      <div className="h-0 w-0 overflow-hidden">
-        <div className="w-96 p-4" ref={contentRef}>
-          <ClipboardContent post={post} />
-        </div>
+      <div className="w-0 h-0 overflow-hidden">
+        <ClipboardContent post={post} ref={contentRef} />
       </div>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
     </>
