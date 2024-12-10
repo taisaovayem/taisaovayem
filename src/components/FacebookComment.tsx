@@ -1,13 +1,15 @@
 "use client";
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 
 export function FacebookComment() {
+  const pathName = usePathname()
   return (
     <>
       <article>
         <div
           className="fb-comments"
-          data-href={window.location.href}
+          data-href={process.env.VERCEL_PROJECT_PRODUCTION_URL + pathName}
           data-width=""
           data-numposts="10"
         ></div>
