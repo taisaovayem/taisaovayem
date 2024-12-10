@@ -7,7 +7,7 @@ export function FacebookComment() {
       <article>
         <div
           className="fb-comments"
-          data-href="https://taisaovayem.com"
+          data-href={window.location.href}
           data-width=""
           data-numposts="10"
         ></div>
