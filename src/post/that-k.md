@@ -1,5 +1,5 @@
 ---
-title: thật k
+title: thật k?
 category: 
     - 'Vạn câu hỏi vì sao'
     - 'Chất vấn'
