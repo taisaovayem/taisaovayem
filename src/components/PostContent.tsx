@@ -7,6 +7,7 @@ import * as htmlToImage from "html-to-image";
 import PostCard from "./PostCard";
 import { CopyIcon, Cross1Icon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
+import ClipboardContent from "./ClipboardContent";
 
 type PostContentProps = {
   post: Post;
@@ -14,7 +15,7 @@ type PostContentProps = {
 
 export function PostContent({ post }: PostContentProps) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const router = useRouter()
+  const router = useRouter();
 
   function copyContent() {
     if (contentRef.current) {
@@ -66,11 +67,7 @@ export function PostContent({ post }: PostContentProps) {
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
       <div className="h-0 w-0 overflow-hidden">
         <div className="w-96 p-4" ref={contentRef}>
-          <PostCard
-            title={post.data.title}
-            slug={post.data.slug}
-            description={post.html}
-          />
+          <ClipboardContent post={post} />
         </div>
       </div>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
