@@ -37,7 +37,7 @@ export default async function Page() {
       </article>
       <article className="py-4">
         <Heading className="mb-4" as="h2">
-          Danh mục
+          Chuyên mục
         </Heading>
         <Flex gap="2" wrap="wrap">
           {categoies.map((categoryName) => (

@@ -38,7 +38,7 @@ Hãy tham khảo các bài viết có sẵn để biết cú pháp viết bài
 Một số thông tin cần lưu ý:
 
  - `title`: Tên bài viết
- - `category`: Danh mục, có thể tạo thêm nhiều danh mục vào bài viết
+ - `category`: Chuyên mục, có thể tạo thêm nhiều chuyên mục vào bài viết
  - `tag`: Tag, có thể thêm nhiều tag vào bài viết
  
  #### Nhúng ảnh

@@ -25,7 +25,7 @@ type PostData = {
   description: Value;
 };
 
-type Post = {
+export type Post = {
   html: Value;
   data: PostData;
 };
