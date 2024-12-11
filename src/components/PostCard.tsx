@@ -4,7 +4,7 @@ import { Value } from "vfile";
 import ClipboardContent from "./ClipboardContent";
 import { useRef } from "react";
 import * as htmlToImage from "html-to-image";
-import { CopyIcon } from "@radix-ui/react-icons";
+import { CopyIcon, Link2Icon } from "@radix-ui/react-icons";
 import styles from "./PostCard.module.css";
 
 export type PostCardProps = {
@@ -31,7 +31,7 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
   }
 
   return (
-    <Card className={`shadow-lg ${styles['post-card']}`}>
+    <Card className={`shadow-lg ${styles["post-card"]}`}>
       <Link href={`/post/${slug}`}>
         <Text as="div" size="2" weight="bold" className="mb-4">
           {title}
@@ -43,21 +43,34 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
           dangerouslySetInnerHTML={{ __html: description }}
         ></Text>
       </Link>
-      <div className={`absolute right-2 top-2 hidden ${styles['copy-button']}`}>
-        <IconButton
-          title="Copy"
-          variant="soft"
-          onClick={copyContent}
-          radius="full"
-          color="plum"
-          className="absolute right-3 top-3"
-        >
-          <CopyIcon />
-        </IconButton>
+      <div className={`absolute right-0 top-0 hidden ${styles["copy-button"]}`}>
+        <div>
+          <IconButton
+            title="Copy"
+            variant="soft"
+            onClick={copyContent}
+            radius="full"
+            color="plum"
+            className="absolute right-3 top-3"
+          >
+            <CopyIcon />
+          </IconButton>
+        </div>
+        <div>
+          <IconButton
+            title="Copy link"
+            variant="soft"
+            onClick={() => navigator.clipboard.writeText(window.location.href)}
+            color="green"
+            radius="full"
+          >
+            <Link2Icon />
+          </IconButton>
+        </div>
       </div>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
       <div className="w-0 h-0 overflow-hidden">
-        <ClipboardContent title={title} html={html} ref={contentRef}/>
+        <ClipboardContent title={title} html={html} ref={contentRef} />
       </div>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
     </Card>

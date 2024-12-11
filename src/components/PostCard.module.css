@@ -1,3 +1,5 @@
 .post-card:hover > .copy-button {
-    display: block;
+    display: grid;
+    column-gap: 0.5rem /* 8px */;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
