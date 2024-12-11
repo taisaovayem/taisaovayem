@@ -14,9 +14,11 @@ export async function generateStaticParams() {
   const allPostData = await getAllPost();
   const slugList: string[] = uniq(
     flattenDeep(
-      allPostData.filter(postData => postData.category).map((postData) =>
-        postData.category.map((categoryName) => createSlug(categoryName))
-      )
+      allPostData
+        .filter((postData) => postData?.category)
+        .map((postData) =>
+          postData?.category?.map((categoryName) => createSlug(categoryName))
+        )
     )
   );
   return slugList.map((slug) => ({
@@ -32,11 +34,11 @@ export async function generateMetadata({
   const { id } = await params;
   const allPostData = await getAllPost();
   const filterdPost = allPostData.filter((postData) =>
-    postData.category
-      .map((categoryName) => createSlug(categoryName))
+    postData?.category
+      ?.map((categoryName) => createSlug(categoryName))
       .includes(id)
   );
-  const categoryNameTitle = filterdPost[0].category.find(
+  const categoryNameTitle = filterdPost[0]?.category?.find(
     (categoryName) => createSlug(categoryName) === id
   );
   return {
@@ -53,11 +55,11 @@ export default async function Category({
   const { id } = await params;
   const allPostData = await getAllPost();
   const filterdPost: Post[] = allPostData.filter((postData) =>
-    postData.category
-      .map((categoryName) => createSlug(categoryName))
+    postData?.category
+      ?.map((categoryName) => createSlug(categoryName))
       .includes(id)
   );
-  const categoryNameTitle = filterdPost[0].category.find(
+  const categoryNameTitle = filterdPost[0]?.category?.find(
     (categoryName) => createSlug(categoryName) === id
   );
   return (

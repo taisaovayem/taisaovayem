@@ -18,9 +18,9 @@ export default async function Page() {
     (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
   );
   const categoies = uniq(
-    flatten(allPostData.map((post) => post.category))
+    flatten(allPostData.filter(post => post?.category).map((post) => post?.category))
   ).sort((a, b) => a.localeCompare(b));
-  const tags = uniq(flatten(allPostData.map((post) => post.tag))).sort((a, b) =>
+  const tags = uniq(flatten(allPostData.filter(post => post?.tag).map((post) => post?.tag))).sort((a, b) =>
     a.localeCompare(b)
   );
 
