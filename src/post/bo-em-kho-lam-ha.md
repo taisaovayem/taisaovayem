@@ -6,3 +6,6 @@ category:
 tag:
   - pressing
 ---
+[Câu nghi vấn]
+
+Được sử dụng khi muốn quan tâm một ai đó

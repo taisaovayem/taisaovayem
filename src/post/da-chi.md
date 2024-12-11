@@ -6,4 +6,4 @@ tag:
     - Trả lời
     - Thoát pressing
 ---
-Dạ chị
+Sử dụng khi tiếp nhận một mệnh lệnh từ một người chị
