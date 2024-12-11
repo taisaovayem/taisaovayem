@@ -1,9 +1,9 @@
-import { getAllPostData } from "@/helpers";
+import { getAllPost, Post } from "@/helpers";
 import uniq from "lodash/uniq";
 import flattenDeep from "lodash/flattenDeep";
 import { createSlug } from "@/helpers/string";
 import { Metadata } from "next";
-import { Badge, Box, Grid, Heading } from "@radix-ui/themes";
+import { Badge, Box, Heading } from "@radix-ui/themes";
 import { PostList } from "@/components";
 
 type CategoryProps = {
@@ -11,7 +11,7 @@ type CategoryProps = {
 };
 
 export async function generateStaticParams() {
-  const allPostData = await getAllPostData();
+  const allPostData = await getAllPost();
   const slugList: string[] = uniq(
     flattenDeep(
       allPostData.map((postData) =>
@@ -30,7 +30,7 @@ export async function generateMetadata({
   params: Promise<CategoryProps>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const allPostData = await getAllPostData();
+  const allPostData = await getAllPost();
   const filterdPost = allPostData.filter((postData) =>
     postData.category
       .map((categoryName) => createSlug(categoryName))
@@ -51,8 +51,8 @@ export default async function Category({
   params: Promise<CategoryProps>;
 }) {
   const { id } = await params;
-  const allPostData = await getAllPostData();
-  const filterdPost = allPostData.filter((postData) =>
+  const allPostData = await getAllPost();
+  const filterdPost: Post[] = allPostData.filter((postData) =>
     postData.category
       .map((categoryName) => createSlug(categoryName))
       .includes(id)

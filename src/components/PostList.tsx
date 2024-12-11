@@ -1,19 +1,19 @@
 "use client";
 import { Masonry } from "react-masonry";
-import PostCard, { PostCardProps } from "./PostCard";
+import PostCard from "./PostCard";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Box, TextField } from "@radix-ui/themes";
 import { removeAccentsLetterOnly } from "@/helpers/string";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { Post } from "@/helpers/post";
 
 type PostListProps = {
-  posts: PostCardProps[];
+  posts: Post[];
 };
 
 export function PostList({ posts }: PostListProps) {
   const [searchText, setSearchText] = useState("");
-  const [postList, setPostList] = useState<PostCardProps[]>(posts);
-
+  const [postList, setPostList] = useState<Post[]>(posts);
   function handleSearch(event: ChangeEvent<HTMLInputElement>) {
     const searchValue = event.target.value;
     setSearchText(searchValue);
@@ -53,7 +53,13 @@ export function PostList({ posts }: PostListProps) {
       <Masonry>
         {postList.map((post) => (
           <div className="w-full sm:w-1/2 lg:w-1/3 p-2" key={post.slug}>
-            <PostCard key={post.slug} {...post} />
+            <PostCard
+              key={post.slug}
+              title={post.title}
+              slug={post.slug}
+              description={post.description}
+              html={post.html}
+            />
           </div>
         ))}
       </Masonry>

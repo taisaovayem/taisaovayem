@@ -1,8 +1,8 @@
-import { getAllPostData } from "@/helpers";
+import { getAllPost } from "@/helpers";
 import uniq from "lodash/uniq";
 import flattenDeep from "lodash/flattenDeep";
 import { createSlug } from "@/helpers/string";
-import { Badge, Box, Heading, Grid, Card, Link, Text } from "@radix-ui/themes";
+import { Badge, Box, Heading } from "@radix-ui/themes";
 import { Metadata } from "next";
 import { PostList } from "@/components";
 
@@ -11,7 +11,7 @@ type TagProps = {
 };
 
 export async function generateStaticParams() {
-  const allPostData = await getAllPostData();
+  const allPostData = await getAllPost();
   const slugList: string[] = uniq(
     flattenDeep(
       allPostData.map((postData) =>
@@ -30,7 +30,7 @@ export async function generateMetadata({
   params: Promise<TagProps>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const allPostData = await getAllPostData();
+  const allPostData = await getAllPost();
   const filterdPost = allPostData.filter((postData) =>
     postData.tag.map((tagName) => createSlug(tagName)).includes(id)
   );
@@ -49,7 +49,7 @@ export default async function Category({
   params: Promise<TagProps>;
 }) {
   const { id } = await params;
-  const allPostData = await getAllPostData();
+  const allPostData = await getAllPost();
   const filterdPost = allPostData.filter((postData) =>
     postData.tag.map((tagName) => createSlug(tagName)).includes(id)
   );

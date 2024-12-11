@@ -2,15 +2,17 @@
 import { Post } from "@/helpers/post";
 import { Text } from "@radix-ui/themes";
 import { forwardRef } from "react";
+import { Value } from "vfile";
 
 type ClipboardContentProps = {
-  post: Post;
+  title: string;
+  html: Value
 };
 
 export const ClipboardContent = forwardRef<
   HTMLDivElement,
   ClipboardContentProps
->(function ClipboardContent({ post }: ClipboardContentProps, ref) {
+>(function ClipboardContent({ title, html }: ClipboardContentProps, ref) {
   
   return (
     <div
@@ -32,13 +34,13 @@ export const ClipboardContent = forwardRef<
           weight="bold"
           className="mb-4 text-white"
         >
-          {post.data.title}
+          {title}
         </Text>
         <Text
           as="div"
           size="2"
           className="mix-blend-screen text-white"
-          dangerouslySetInnerHTML={{ __html: post.html }}
+          dangerouslySetInnerHTML={{ __html: html }}
         ></Text>
       </div>
     </div>

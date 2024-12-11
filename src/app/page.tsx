@@ -1,4 +1,4 @@
-import { getAllPostData } from "@/helpers";
+import { getAllPost } from "@/helpers";
 import Link from "next/link";
 import uniq from "lodash/uniq";
 import { flatten } from "lodash";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const allPostData = await getAllPostData();
+  const allPostData = await getAllPost();
   const postSorted = allPostData.sort(
     (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
   );

@@ -1,6 +1,6 @@
 "use client";
 import { CSSProperties, useEffect, useState } from "react";
-import styles from "./audio-player.module.css";
+import styles from "./AudioPlayer.module.css";
 
 type AudioPlayerProps = {
   source: string;
