@@ -4,7 +4,7 @@ import { Box, IconButton } from "@radix-ui/themes";
 import { useRef } from "react";
 import PostTitle from "./PostTitle";
 import * as htmlToImage from "html-to-image";
-import { CopyIcon, Cross1Icon } from "@radix-ui/react-icons";
+import { CopyIcon, Cross1Icon, Link2Icon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import ClipboardContent from "./ClipboardContent";
 
@@ -39,7 +39,7 @@ export function PostContent({ post }: PostContentProps) {
           dangerouslySetInnerHTML={{ __html: post.html }}
           className="text-gray-500"
         ></div>
-        <div className="hidden md:absolute right-3 top-3 md:grid gap-x-2 grid-cols-2">
+        <div className="hidden md:absolute right-3 top-3 md:grid gap-x-2 grid-cols-3">
           <div>
             <IconButton
               title="Copy"
@@ -48,6 +48,17 @@ export function PostContent({ post }: PostContentProps) {
               radius="full"
             >
               <CopyIcon />
+            </IconButton>
+          </div>
+          <div>
+            <IconButton
+              title="Copy link"
+              variant="soft"
+              onClick={() => navigator.clipboard.writeText(window.location.href)}
+              color="green"
+              radius="full"
+            >
+              <Link2Icon />
             </IconButton>
           </div>
           <div>
