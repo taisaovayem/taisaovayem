@@ -43,7 +43,7 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
           dangerouslySetInnerHTML={{ __html: description }}
         ></Text>
       </Link>
-      <div className={`absolute right-0 top-0 hidden ${styles["copy-button"]}`}>
+      <div className={`absolute right-2 top-2 hidden ${styles["copy-button"]}`}>
         <div>
           <IconButton
             title="Copy"
@@ -51,7 +51,6 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
             onClick={copyContent}
             radius="full"
             color="plum"
-            className="absolute right-3 top-3"
           >
             <CopyIcon />
           </IconButton>
