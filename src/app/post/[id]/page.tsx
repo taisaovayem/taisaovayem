@@ -62,7 +62,7 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
           Chuyên mục
         </Heading>
         <Flex gap="2" wrap="wrap">
-          {post.category.map((categoryName) => (
+          {post?.category.map((categoryName) => (
             <Badge key={categoryName} color="green">
               <Link href={`/category/${createSlug(categoryName)}`}>
                 {categoryName}
@@ -76,7 +76,7 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
           Tag
         </Heading>
         <Flex gap="2" wrap="wrap">
-          {post.tag.map((tagName) => (
+          {post?.tag.map((tagName) => (
             <Badge key={tagName} color="pink">
               <Link href={`/tag/${createSlug(tagName)}`}>{tagName}</Link>
             </Badge>

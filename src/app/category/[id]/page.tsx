@@ -14,7 +14,7 @@ export async function generateStaticParams() {
   const allPostData = await getAllPost();
   const slugList: string[] = uniq(
     flattenDeep(
-      allPostData.map((postData) =>
+      allPostData.filter(postData => postData.category).map((postData) =>
         postData.category.map((categoryName) => createSlug(categoryName))
       )
     )
