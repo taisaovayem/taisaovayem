@@ -6,4 +6,4 @@ tag:
   - Anh em cc tình nghĩa xl
 ---
 
-![Nghe em giải thích đã](/nguoi-dan-ong-that-vong.jpg "Nghe em giải thích đã")
+![Nghe em giải thích đã](/nghe-em-giai-thich-da.jpeg "Nghe em giải thích đã")

@@ -33,13 +33,13 @@ export async function generateMetadata({
   const post = await getPost(id);
   const thumbnail = getThumbnail(post);
   const metaData: Metadata = {
-    title: post.data.title,
+    title: post.title,
     description:
-      post.html?.toString()?.replace(/<[^>]+>/g, "") || post.data.title,
+      post.html?.toString()?.replace(/<[^>]+>/g, "") || post.title,
     openGraph: {
-      title: post.data.title,
+      title: post.title,
       description:
-        post.html?.toString()?.replace(/<[^>]+>/g, "") || post.data.title,
+        post.html?.toString()?.replace(/<[^>]+>/g, "") || post.title,
     },
   };
   if (thumbnail && thumbnail?.length) {
@@ -62,7 +62,7 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
           Chuyên mục
         </Heading>
         <Flex gap="2" wrap="wrap">
-          {post.data.category.map((categoryName) => (
+          {post.category.map((categoryName) => (
             <Badge key={categoryName} color="green">
               <Link href={`/category/${createSlug(categoryName)}`}>
                 {categoryName}
@@ -76,7 +76,7 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
           Tag
         </Heading>
         <Flex gap="2" wrap="wrap">
-          {post.data.tag.map((tagName) => (
+          {post.tag.map((tagName) => (
             <Badge key={tagName} color="pink">
               <Link href={`/tag/${createSlug(tagName)}`}>{tagName}</Link>
             </Badge>

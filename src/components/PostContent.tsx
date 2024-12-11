@@ -33,7 +33,7 @@ export function PostContent({ post }: PostContentProps) {
     <>
       <Box className="bg-gray-100 rounded-xl mb-8 p-9 relative">
         <header className="mb-6">
-          <PostTitle>{post.data.title}</PostTitle>
+          <PostTitle>{post.title}</PostTitle>
         </header>
         <div
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -65,7 +65,7 @@ export function PostContent({ post }: PostContentProps) {
       </Box>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
       <div className="w-0 h-0 overflow-hidden">
-        <ClipboardContent post={post} ref={contentRef} />
+        <ClipboardContent title={post.title} html={post.html} ref={contentRef} />
       </div>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
     </>

@@ -16,18 +16,14 @@ function getMdFileName(slug: string) {
   return mdFileName;
 }
 
-type PostData = {
+export type Post = {
   title: string;
   category: string[];
   createdAt: Date;
   tag: string[];
   slug: string;
   description: Value;
-};
-
-export type Post = {
   html: Value;
-  data: PostData;
 };
 
 export async function getPost(slug: string): Promise<Post> {
@@ -42,27 +38,29 @@ export async function getPost(slug: string): Promise<Post> {
     .use(rehypeStringify, { allowDangerousHtml: true }) // Convert AST into serialized HTML
     .process(matterResult.content);
   return {
+    ...matterResult.data,
     html: postHtml.value,
-    data: { ...matterResult.data, createdAt: stat.birthtime } as PostData,
-  };
+    createdAt: stat.birthtime,
+  } as Post;
 }
 
-export async function getAllPostData() {
+export async function getAllPost() {
   const fileList = fs.readdirSync(POST_DIRECTORY);
-  const allPostData: PostData[] = [];
+  const allPost: Post[] = [];
   for (const fileName of fileList) {
     const slug = fileName.replaceAll(".md", "");
     const post = await getPost(slug);
-    allPostData.push({
-      ...post.data,
+    allPost.push({
+      ...post,
       slug,
       description: clip(post.html?.toString(), 500, {
         html: true,
         maxLines: 5,
       }),
+      html: post.html,
     });
   }
-  return allPostData.sort(
+  return allPost.sort(
     (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
   );
 }
