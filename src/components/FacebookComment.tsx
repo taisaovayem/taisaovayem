@@ -9,7 +9,7 @@ export function FacebookComment() {
       <article>
         <div
           className="fb-comments"
-          data-href={process.env.VERCEL_PROJECT_PRODUCTION_URL + pathName}
+          data-href={(process.env.VERCEL_PROJECT_PRODUCTION_URL ?? 'taisaovayem.com') + pathName}
           data-width=""
           data-numposts="10"
         ></div>

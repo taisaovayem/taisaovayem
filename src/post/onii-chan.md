@@ -1,5 +1,5 @@
 ---
-title: Âm thanh onii-chan
+title: Onii-chan
 category: 
     - 'Âm thanh'
     - Wibu
