@@ -59,7 +59,7 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
           <IconButton
             title="Copy link"
             variant="soft"
-            onClick={() => navigator.clipboard.writeText(window.location.href)}
+            onClick={() => navigator.clipboard.writeText(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? 'taisaovayem.com'}/post/${slug}`)}
             color="green"
             radius="full"
           >
