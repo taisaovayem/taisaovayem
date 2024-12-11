@@ -5,4 +5,6 @@ category:
 tag:
     - Tết
 ---
-Nên...
+[Văn mẫu]
+
+Khi nhìn thấy câu này, có nghĩa là có cái nịt

@@ -6,4 +6,6 @@ tag:
   - Trả lời
   - Thoát pressing
 ---
-ok em
+[Văn mẫu]
+
+Dùng để lời khi bạn bị một đứa em phản dame

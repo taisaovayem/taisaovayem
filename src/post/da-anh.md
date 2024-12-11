@@ -6,4 +6,4 @@ tag:
     - Trả lời
     - Thoát pressing
 ---
-Dạ anh
+Sử dụng khi tiếp nhận một mệnh lệnh từ một người anh
