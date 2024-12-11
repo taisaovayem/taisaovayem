@@ -11,7 +11,10 @@ export function AudioPlayer({ source, color }: AudioPlayerProps) {
   const customStyle: CSSProperties = {
     backgroundColor: "magenta",
   };
-  if (color) {
+  if (color && /^(?:[0-9a-fA-F]{3}){1,2}$/.test(color)) {
+    customStyle.backgroundColor = "#" + color;
+  }
+  if (color && !/^(?:[0-9a-fA-F]{3}){1,2}$/.test(color)) {
     customStyle.backgroundColor = color;
   }
 
