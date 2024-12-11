@@ -9,4 +9,8 @@ tag:
     - xl86
     - Tục
 ---
-Đệt
+zḛʔt˨˩
+
+[Thán từ]
+
+Được thốt ra khi ai đó nhìn thấy điều gì đó khiến họ bất ngờ
