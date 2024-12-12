@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
@@ -19,6 +19,14 @@ export const metadata: Metadata = {
   title: "Tại sao vậy em?",
   description: "Tại sao vậy em?",
 };
+
+export function generateViewport(): Viewport {
+  return {
+    colorScheme: "dark light",
+    initialScale: 1,
+    width: "device-width",
+  }
+}
 
 export default function RootLayout({
   children,
