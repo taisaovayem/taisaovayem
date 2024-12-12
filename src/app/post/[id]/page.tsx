@@ -7,7 +7,6 @@ import { Heading, Flex, Badge } from "@radix-ui/themes";
 import { Metadata } from "next";
 import { PostContent } from "@/components";
 import set from "lodash/set";
-import FacebookComment from "@/components/FacebookComment";
 
 type PostProps = {
   id: string;
@@ -83,7 +82,6 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
           ))}
         </Flex>
       </article>
-      <FacebookComment />
     </>
   );
 }
