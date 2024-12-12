@@ -31,7 +31,7 @@ export function PostContent({ post }: PostContentProps) {
   }
   return (
     <>
-      <Box className="bg-gray-100 rounded-xl mb-8 p-9 relative">
+      <Box className=" rounded-xl mb-8 p-4 md:p-9 relative" style={{background: 'var(--gray-a3)'}}>
         <header className="mb-6">
           <PostTitle>{post.title}</PostTitle>
         </header>
