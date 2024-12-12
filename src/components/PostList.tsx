@@ -37,18 +37,20 @@ export function PostList({ posts }: PostListProps) {
   return (
     <>
       <Box className="p-2">
-        <TextField.Root
-          placeholder="Tìm kiếm"
-          value={searchText}
-          onChange={handleSearch}
-          radius="full"
-          color="indigo"
-          variant="soft"
-        >
-          <TextField.Slot>
-            <MagnifyingGlassIcon height="16" width="16" />
-          </TextField.Slot>
-        </TextField.Root>
+        <form onSubmit={e => e.preventDefault()}>
+          <TextField.Root
+            placeholder="Tìm kiếm"
+            value={searchText}
+            onChange={handleSearch}
+            radius="full"
+            color="indigo"
+            variant="soft"
+          >
+            <TextField.Slot>
+              <MagnifyingGlassIcon height="16" width="16" />
+            </TextField.Slot>
+          </TextField.Root>
+        </form>
       </Box>
       <Masonry>
         {postList.map((post) => (
