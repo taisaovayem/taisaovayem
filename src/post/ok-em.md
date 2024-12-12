@@ -8,4 +8,4 @@ tag:
 ---
 [Văn mẫu]
 
-Dùng để trả lời khi bạn bị một đứa em phản dame
+Dùng để để né chiêu của 1 đứa em
