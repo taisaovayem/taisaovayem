@@ -8,4 +8,4 @@ tag:
 ---
 [Văn mẫu]
 
-Dùng để lời khi bạn bị một đứa em phản dame
+Dùng để trả lời khi bạn bị một đứa em phản dame
