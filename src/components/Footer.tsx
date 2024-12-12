@@ -15,11 +15,5 @@ export function Footer() {
       </span>{" "}
       Đóng góp nội dung
     </Link>
-    <Link href="/page/chinh-sach-quyen-rieng-tu">
-      <span className="inline-block align-middle">
-        <LockClosedIcon />
-      </span>{" "}
-      Chính sách quyền riêng tư
-    </Link>
   </footer>
 }
