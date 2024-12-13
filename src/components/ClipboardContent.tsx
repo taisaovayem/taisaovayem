@@ -15,7 +15,6 @@ export const ClipboardContent = forwardRef<
   const thumbnail = html?.toString()?.match(/<img [^>]*src="[^"]*"[^>]*>/gm)
     ?.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
   const background = thumbnail?.length ? thumbnail[0] : '/quote-background.jpg'
-  const postContent = html?.toString()?.replace(/<[^>]+>/g, "")
 
   return (
     <div
@@ -39,11 +38,11 @@ export const ClipboardContent = forwardRef<
         >
           {title}
         </Text>
-        {postContent ? <Text
+        {html?.toString() ? <Text
           as="div"
           size="2"
           className="mix-blend-screen text-white"
-          dangerouslySetInnerHTML={{ __html: postContent }}
+          dangerouslySetInnerHTML={{ __html: html }}
         ></Text> : null}
       </div>
     </div>
