@@ -1,7 +1,7 @@
 "use client";
 import { Post } from "@/helpers";
 import { Box, IconButton } from "@radix-ui/themes";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import PostTitle from "./PostTitle";
 import * as htmlToImage from "html-to-image";
 import { CopyIcon, Cross1Icon, Link2Icon } from "@radix-ui/react-icons";
@@ -15,6 +15,7 @@ type PostContentProps = {
 export function PostContent({ post }: PostContentProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [isLoadingBackgroundClipboard, setIsLoadingBackgroundClipboard] = useState(false)
 
   function copyContent() {
     if (contentRef.current) {
@@ -46,6 +47,7 @@ export function PostContent({ post }: PostContentProps) {
               variant="soft"
               onClick={copyContent}
               radius="full"
+              loading={isLoadingBackgroundClipboard}
             >
               <CopyIcon />
             </IconButton>
@@ -76,7 +78,7 @@ export function PostContent({ post }: PostContentProps) {
       </Box>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
       <div className="w-0 h-0 overflow-hidden">
-        <ClipboardContent title={post.title} html={post.html} ref={contentRef} />
+        <ClipboardContent setIsLoading={setIsLoadingBackgroundClipboard} title={post.title} html={post.html} ref={contentRef} />
       </div>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
     </>

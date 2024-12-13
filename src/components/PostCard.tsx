@@ -2,7 +2,7 @@
 import { Card, IconButton, Link, Text } from "@radix-ui/themes";
 import { Value } from "vfile";
 import ClipboardContent from "./ClipboardContent";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import * as htmlToImage from "html-to-image";
 import { CopyIcon, Link2Icon } from "@radix-ui/react-icons";
 import styles from "./PostCard.module.css";
@@ -16,6 +16,8 @@ export type PostCardProps = {
 
 export function PostCard({ slug, title, description, html }: PostCardProps) {
   const contentRef = useRef<HTMLDivElement>(null);
+  const [isLoadingBackgroundClipboard, setIsLoadingBackgroundClipboard] = useState(false)
+
   function copyContent() {
     if (contentRef.current) {
       htmlToImage.toBlob(contentRef.current).then((imageBlob) => {
@@ -51,6 +53,7 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
             onClick={copyContent}
             radius="full"
             color="plum"
+            loading={isLoadingBackgroundClipboard}
           >
             <CopyIcon />
           </IconButton>
@@ -69,7 +72,7 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
       </div>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
       <div className="w-0 h-0 overflow-hidden">
-        <ClipboardContent title={title} html={html} ref={contentRef} />
+        <ClipboardContent title={title} html={html} ref={contentRef} setIsLoading={setIsLoadingBackgroundClipboard}/>
       </div>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
     </Card>
