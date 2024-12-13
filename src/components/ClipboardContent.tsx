@@ -19,7 +19,7 @@ export const ClipboardContent = forwardRef<
 
   return (
     <div
-      className="bg-cover w-96 min-h-64 h-auto p-8 flex items-center justify-center relative"
+      className="bg-cover w-96 min-h-64 h-auto p-8 flex items-center justify-center relative bg-center"
       style={{ backgroundImage: `url('${background}')` }}
       ref={ref}
     >
