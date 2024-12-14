@@ -64,7 +64,7 @@ export default async function Category({
   );
   return (
     <>
-      <Box className=" rounded-xl mb-8 p-4 md:p-9" style={{background: 'var(--gray-a3)'}}>
+      <Box className=" rounded-xl mb-2 p-4 md:p-9" style={{background: 'var(--gray-a3)'}}>
         <Badge className="mb-4">Chuyên mục</Badge>
         <Heading>{categoryNameTitle}</Heading>
       </Box>

@@ -1,57 +1,22 @@
 "use client";
 import { Text } from "@radix-ui/themes";
-import {
-  Dispatch,
-  forwardRef,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { forwardRef } from "react";
 import { Value } from "vfile";
 
 type ClipboardContentProps = {
   title: string;
   html: Value;
-  setIsLoading?: Dispatch<SetStateAction<boolean>>;
 };
 
 export const ClipboardContent = forwardRef<
   HTMLDivElement,
   ClipboardContentProps
->(function ClipboardContent(
-  { title, html, setIsLoading }: ClipboardContentProps,
-  ref
-) {
+>(function ClipboardContent({ title, html }: ClipboardContentProps, ref) {
   const thumbnail = html
     ?.toString()
     ?.match(/<img [^>]*src="[^"]*"[^>]*>/gm)
     ?.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
   const background = thumbnail?.length ? thumbnail[0] : "/quote-background.jpg";
-  const [backgroundUrl, setBackgroundUrl] = useState<string>();
-
-  function blobToBase64(blob: Blob) {
-    const reader = new FileReader();
-    reader.readAsDataURL(blob);
-    return new Promise((resolve) => {
-      reader.onloadend = () => {
-        resolve(reader.result);
-      };
-    }) as unknown as Promise<string>;
-  }
-
-  async function fetchBackground() {
-    setIsLoading?.(true);
-    const _backGroundBlob = await fetch(background).then((result) =>
-      result.blob()
-    );
-    const base64Image = await blobToBase64(_backGroundBlob);
-    setBackgroundUrl(base64Image);
-    setIsLoading?.(false);
-  }
-
-  useEffect(() => {
-    fetchBackground();
-  }, []);
 
   return (
     <div
@@ -61,7 +26,7 @@ export const ClipboardContent = forwardRef<
       <div
         className="bg-cover absolute -left-6 -top-6 -right-6 -bottom-5 -z-0 bg-slate-600"
         style={{
-          backgroundImage: `url('${backgroundUrl}')`,
+          backgroundImage: `url('${background}')`,
           filter: "saturate(180%) blur(20px)",
         }}
       ></div>

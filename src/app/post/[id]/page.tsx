@@ -53,7 +53,7 @@ export default async function Post({ params }: { params: Promise<PostProps> }) {
 
   return (
     <>
-      <article className="w-full mb-8">
+      <article className="w-full">
         <PostContent post={post} />
       </article>
       <article className="py-4">
