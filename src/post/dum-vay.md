@@ -1,8 +1,9 @@
 ---
-title: Dễ thương nên tha thứ
+title: Đúm vậy
 category:
+  - Trả lời
   - Cute
 tag:
   - ỏ ỏ ỏ
 ---
-uwu
+:))
