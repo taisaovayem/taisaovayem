@@ -94,7 +94,7 @@ export function PostList({ posts }: PostListProps) {
             <TextField.Slot>
               <MagnifyingGlassIcon height="16" width="16" />
             </TextField.Slot>
-            <TextField.Slot>
+            {searchText?.length > 0 && <TextField.Slot>
               <IconButton
                 title="Xóa"
                 variant="ghost"
@@ -107,7 +107,7 @@ export function PostList({ posts }: PostListProps) {
               >
                 <CrossCircledIcon />
               </IconButton>
-            </TextField.Slot>
+            </TextField.Slot>}
           </TextField.Root>
         </form>
       </Box>
