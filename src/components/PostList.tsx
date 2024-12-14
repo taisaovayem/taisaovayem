@@ -2,7 +2,7 @@
 import { Masonry } from "react-masonry";
 import PostCard from "./PostCard";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { Box, TextField, Button, IconButton } from "@radix-ui/themes";
+import { Box, TextField, IconButton, Spinner } from "@radix-ui/themes";
 import { removeAccentsLetterOnly } from "@/helpers/string";
 import { MagnifyingGlassIcon, CrossCircledIcon } from "@radix-ui/react-icons";
 import { Post } from "@/helpers/post";
@@ -124,7 +124,7 @@ export function PostList({ posts }: PostListProps) {
           </div>
         ))}
       </Masonry>
-      <div ref={loadPoint}></div>
+      <div className="flex justify-center w-full" ref={loadPoint}><Spinner loading={postListDisplayDebouce.length < postList.length} size="3"/></div>
     </>
   );
 }
