@@ -1,5 +1,4 @@
 "use client";
-import { Masonry } from "react-masonry";
 import PostCard from "./PostCard";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Box, TextField, IconButton, Spinner } from "@radix-ui/themes";
@@ -8,6 +7,7 @@ import { MagnifyingGlassIcon, CrossCircledIcon } from "@radix-ui/react-icons";
 import { Post } from "@/helpers/post";
 import debounce from "lodash/debounce";
 import { useDebounce } from "@/hooks";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 type PostListProps = {
   posts: Post[];
@@ -94,37 +94,46 @@ export function PostList({ posts }: PostListProps) {
             <TextField.Slot>
               <MagnifyingGlassIcon height="16" width="16" />
             </TextField.Slot>
-            {searchText?.length > 0 && <TextField.Slot>
-              <IconButton
-                title="Xóa"
-                variant="ghost"
-                onClick={() => {
-                  setSearchText("");
-                  setPostList(posts);
-                  setPostListDisplay(posts);
-                }}
-                radius="full"
-              >
-                <CrossCircledIcon />
-              </IconButton>
-            </TextField.Slot>}
+            {searchText?.length > 0 && (
+              <TextField.Slot>
+                <IconButton
+                  title="Xóa"
+                  variant="ghost"
+                  onClick={() => {
+                    setSearchText("");
+                    setPostList(posts);
+                    setPostListDisplay(posts);
+                  }}
+                  radius="full"
+                >
+                  <CrossCircledIcon />
+                </IconButton>
+              </TextField.Slot>
+            )}
           </TextField.Root>
         </form>
       </Box>
-      <Masonry>
-        {postListDisplayDebouce.map((post) => (
-          <div className="w-full sm:w-1/2 lg:w-1/3 p-2" key={post.slug}>
-            <PostCard
-              key={post.slug}
-              title={post.title}
-              slug={post.slug}
-              description={post.description}
-              html={post.html}
-            />
-          </div>
-        ))}
-      </Masonry>
-      <div className="flex justify-center w-full" ref={loadPoint}><Spinner loading={postListDisplayDebouce.length < postList.length} size="3"/></div>
+      <ResponsiveMasonry>
+        <Masonry>
+          {postListDisplayDebouce.map((post) => (
+            <div className="w-full p-2" key={post.slug}>
+              <PostCard
+                key={post.slug}
+                title={post.title}
+                slug={post.slug}
+                description={post.description}
+                html={post.html}
+              />
+            </div>
+          ))}
+        </Masonry>
+      </ResponsiveMasonry>
+      <div className="flex justify-center w-full" ref={loadPoint}>
+        <Spinner
+          loading={postListDisplayDebouce.length < postList.length}
+          size="3"
+        />
+      </div>
     </>
   );
 }
