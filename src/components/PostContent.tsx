@@ -8,7 +8,6 @@ import {
   CopyIcon,
   Cross1Icon,
   Link2Icon,
-  HomeIcon,
 } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import ClipboardContent from "./ClipboardContent";
@@ -71,32 +70,17 @@ export function PostContent({ post }: PostContentProps) {
               <Link2Icon />
             </IconButton>
           </div>
-          {(history?.length ?? 0) > 1 && (
-            <div>
-              <IconButton
-                title="Quay lại"
-                variant="soft"
-                onClick={() => router.back()}
-                color="tomato"
-                radius="full"
-              >
-                <Cross1Icon />
-              </IconButton>
-            </div>
-          )}
-          {(history?.length ?? 0) <= 1 && (
-            <div>
-              <IconButton
-                title="Trang chủ"
-                variant="soft"
-                onClick={() => router.push("/")}
-                color="tomato"
-                radius="full"
-              >
-                <HomeIcon />
-              </IconButton>
-            </div>
-          )}
+          <div>
+            <IconButton
+              title="Quay lại"
+              variant="soft"
+              onClick={() => router.back()}
+              color="tomato"
+              radius="full"
+            >
+              <Cross1Icon />
+            </IconButton>
+          </div>
         </div>
       </Box>
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
