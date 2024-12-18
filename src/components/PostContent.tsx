@@ -71,7 +71,7 @@ export function PostContent({ post }: PostContentProps) {
               <Link2Icon />
             </IconButton>
           </div>
-          {history.length > 1 && (
+          {(history?.length ?? 0) > 1 && (
             <div>
               <IconButton
                 title="Quay lại"
@@ -84,7 +84,7 @@ export function PostContent({ post }: PostContentProps) {
               </IconButton>
             </div>
           )}
-          {history.length <= 1 && (
+          {(history?.length ?? 0) <= 1 && (
             <div>
               <IconButton
                 title="Trang chủ"
