@@ -9,11 +9,5 @@ export function Footer() {
       </span>{" "}
       Trang chủ
     </Link>
-    <Link href="https://github.com/tmthan/taisaovayem">
-      <span className="inline-block align-middle">
-        <GitHubLogoIcon />
-      </span>{" "}
-      Đóng góp nội dung
-    </Link>
   </footer>
 }

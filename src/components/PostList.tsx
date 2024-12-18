@@ -1,6 +1,6 @@
 "use client";
 import PostCard from "./PostCard";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import { Box, TextField, IconButton, Spinner } from "@radix-ui/themes";
 import { removeAccentsLetterOnly } from "@/helpers/string";
 import { MagnifyingGlassIcon, CrossCircledIcon } from "@radix-ui/react-icons";
@@ -28,9 +28,7 @@ export function PostList({ posts }: PostListProps) {
     setLastIndex((previousIndex) => previousIndex + pageSize);
   }
 
-  function handleSearch(event: ChangeEvent<HTMLInputElement>) {
-    const searchValue = event.target.value;
-    setSearchText(searchValue);
+  function handleSearch(searchValue: string) {
     if (!searchValue) {
       setPostList(posts);
       const _postDisplay = posts.slice(0, PAGE_SIZE);
@@ -49,6 +47,8 @@ export function PostList({ posts }: PostListProps) {
       setLastIndex(_postDisplay.length - 1);
     }
   }
+
+  const handleSearchDebounce = useCallback(debounce(handleSearch, 500), []);
 
   function loadMore() {
     if (postList.length === postListDisplay.length) return;
@@ -79,6 +79,10 @@ export function PostList({ posts }: PostListProps) {
     return () => document.removeEventListener("scroll", infiniteScrollDebounce);
   }, [lastIndex]);
 
+  useEffect(() => {
+    handleSearchDebounce(searchText);
+  }, [searchText]);
+
   return (
     <>
       <Box className="p-2">
@@ -86,7 +90,7 @@ export function PostList({ posts }: PostListProps) {
           <TextField.Root
             placeholder="Tìm kiếm"
             value={searchText}
-            onChange={handleSearch}
+            onChange={(e) => setSearchText(e.target.value)}
             radius="full"
             color="indigo"
             variant="soft"
@@ -99,6 +103,7 @@ export function PostList({ posts }: PostListProps) {
                 <IconButton
                   title="Xóa"
                   variant="ghost"
+                  type="button"
                   onClick={() => {
                     setSearchText("");
                     setPostList(posts);
