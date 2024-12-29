@@ -1,6 +1,6 @@
 "use client";
 import PostCard from "./PostCard";
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Box, TextField, IconButton, Spinner } from "@radix-ui/themes";
 import { removeAccentsLetterOnly } from "@/helpers/string";
 import { MagnifyingGlassIcon, CrossCircledIcon } from "@radix-ui/react-icons";
@@ -52,7 +52,7 @@ export function PostList({ posts }: PostListProps) {
 
   function loadMore() {
     if (postList.length === postListDisplay.length) return;
-    const _postNext = postList.slice(lastIndex, lastIndex + PAGE_SIZE);
+    const _postNext = postList.slice(lastIndex + 1, lastIndex + 1 + PAGE_SIZE);
     addLastIndex();
     setPostListDisplay((previousPostList) =>
       previousPostList.concat(_postNext)
