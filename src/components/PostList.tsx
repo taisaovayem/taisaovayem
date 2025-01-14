@@ -1,9 +1,9 @@
 "use client";
 import PostCard from "./PostCard";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Box, TextField, IconButton, Spinner } from "@radix-ui/themes";
+import { Box, TextField, IconButton } from "@radix-ui/themes";
 import { removeAccentsLetterOnly } from "@/helpers/string";
-import { MagnifyingGlassIcon, CrossCircledIcon } from "@radix-ui/react-icons";
+import { MagnifyingGlassIcon, CrossCircledIcon, DoubleArrowDownIcon } from "@radix-ui/react-icons";
 import { Post } from "@/helpers/post";
 import debounce from "lodash/debounce";
 import { useDebounce } from "@/hooks";
@@ -134,10 +134,7 @@ export function PostList({ posts }: PostListProps) {
         </Masonry>
       </ResponsiveMasonry>
       <div className="flex justify-center w-full" ref={loadPoint}>
-        <Spinner
-          loading={postListDisplayDebouce.length < postList.length}
-          size="3"
-        />
+        <DoubleArrowDownIcon className="animate-bounce text-pink-700 w-6 h-6"/>
       </div>
     </>
   );
