@@ -133,9 +133,13 @@ export function PostList({ posts }: PostListProps) {
           ))}
         </Masonry>
       </ResponsiveMasonry>
-      <div className="flex justify-center w-full" ref={loadPoint}>
-        <DoubleArrowDownIcon className="animate-bounce text-pink-700 w-6 h-6"/>
-      </div>
+      {
+        postListDisplayDebouce.length !== postList.length &&
+        <div className="flex justify-center w-full" ref={loadPoint}>
+          <DoubleArrowDownIcon className="animate-bounce text-pink-700 w-6 h-6" />
+        </div>
+      }
+
     </>
   );
 }
