@@ -1,5 +1,5 @@
 ---
-title: Bạn cay à? Nhưng bạn làm gì được tôi? Báo chính quyền à?
+title: Bạn tôi cay à? Nhưng bạn làm gì được tôi? Báo chính quyền à?
 category: 
     - Thách thức danh hài
 tag:
