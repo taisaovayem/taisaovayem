@@ -17,7 +17,7 @@ type PostListProps = {
   filter: PostFilterParams;
 };
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 50;
 
 async function getServerPostList(
   filter: PostFilterParams
@@ -127,21 +127,25 @@ export function PostList({ filter }: PostListProps) {
           </TextField.Root>
         </form>
       </Box>
-      <ResponsiveMasonry>
+      {/* eslint-disable-next-line */}
+      {/* @ts-ignore */}
+      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+        {/* eslint-disable-next-line */}
+        {/* @ts-ignore */}
         <Masonry>
           {postList.map((post) => (
-            <div className="w-full p-2" key={post.id}>
-              <PostCard
-                key={post.id}
-                title={post.title.rendered}
-                slug={post.slug}
-                description={clip(post.content.rendered, 500, {
-                  html: true,
-                  maxLines: 5,
-                })}
-                html={post.content.rendered}
-              />
-            </div>
+        <div className="w-full p-2" key={post.id}>
+          <PostCard
+            key={post.id}
+            title={post.title.rendered}
+            slug={post.slug}
+            description={clip(post.content.rendered, 500, {
+          html: true,
+          maxLines: 5,
+            })}
+            html={post.content.rendered}
+          />
+        </div>
           ))}
         </Masonry>
       </ResponsiveMasonry>
