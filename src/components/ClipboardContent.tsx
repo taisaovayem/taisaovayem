@@ -1,11 +1,10 @@
 "use client";
 import { Text } from "@radix-ui/themes";
 import { forwardRef } from "react";
-import { Value } from "vfile";
 
 type ClipboardContentProps = {
   title: string;
-  html: Value;
+  html: string;
 };
 
 export const ClipboardContent = forwardRef<
@@ -13,7 +12,6 @@ export const ClipboardContent = forwardRef<
   ClipboardContentProps
 >(function ClipboardContent({ title, html }: ClipboardContentProps, ref) {
   const thumbnail = html
-    ?.toString()
     ?.match(/<img [^>]*src="[^"]*"[^>]*>/gm)
     ?.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
   const background = thumbnail?.length ? thumbnail[0] : "/quote-background.jpg";
@@ -40,7 +38,7 @@ export const ClipboardContent = forwardRef<
         >
           {title}
         </Text>
-        {html?.toString() ? (
+        {html ? (
           <Text
             as="div"
             size="2"

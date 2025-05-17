@@ -1,6 +1,5 @@
 "use client";
 import { Card, IconButton, Link, Text } from "@radix-ui/themes";
-import { Value } from "vfile";
 import ClipboardContent from "./ClipboardContent";
 import { useRef } from "react";
 import * as htmlToImage from "html-to-image";
@@ -10,8 +9,8 @@ import styles from "./PostCard.module.css";
 export type PostCardProps = {
   title: string;
   slug: string;
-  description: Value;
-  html: Value;
+  description: string;
+  html: string;
 };
 
 export function PostCard({ slug, title, description, html }: PostCardProps) {

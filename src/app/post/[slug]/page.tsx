@@ -6,10 +6,14 @@ import { PostContent } from "@/components";
 import set from "lodash/set";
 import { getPostBySlug, getCategoryList, getTagList } from "@/api"; // cập nhật lại đường dẫn nếu cần
 
+type PostProps = {
+  slug: string;
+};
+
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<PostProps>;
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
@@ -36,7 +40,7 @@ export async function generateMetadata({
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<PostProps>;
 }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
