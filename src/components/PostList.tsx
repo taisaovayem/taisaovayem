@@ -1,62 +1,59 @@
 "use client";
 import PostCard from "./PostCard";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Box, TextField, IconButton } from "@radix-ui/themes";
-import { removeAccentsLetterOnly } from "@/helpers/string";
-import { MagnifyingGlassIcon, CrossCircledIcon, DoubleArrowDownIcon } from "@radix-ui/react-icons";
-import { Post } from "@/helpers/post";
+import {
+  MagnifyingGlassIcon,
+  CrossCircledIcon,
+  DoubleArrowDownIcon,
+} from "@radix-ui/react-icons";
 import debounce from "lodash/debounce";
-import { useDebounce } from "@/hooks";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { Post, PostFilterParams, PostList as PostListType } from "@/api";
+import clip from "@/helpers/text-clipper";
+import axios from "axios";
 
 type PostListProps = {
-  posts: Post[];
+  filter: PostFilterParams;
 };
 
 const PAGE_SIZE = 10;
 
-export function PostList({ posts }: PostListProps) {
+async function getServerPostList(
+  filter: PostFilterParams
+): Promise<PostListType> {
+  const result = await axios.get("/api/post", {
+    params: filter,
+  });
+  return result.data;
+}
+
+export function PostList({ filter }: PostListProps) {
   const [searchText, setSearchText] = useState("");
-  const [postList, setPostList] = useState<Post[]>(posts);
-  const [postListDisplay, setPostListDisplay] = useState<Post[]>([]);
-  const [lastIndex, setLastIndex] = useState(0);
+  const [searchTextTemp, setSearchTextTemp] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [postList, setPostList] = useState<Post[]>([]);
   const loadPoint = useRef<HTMLDivElement>(null);
 
-  const postListDisplayDebouce = useDebounce(postListDisplay);
-
-  function addLastIndex(pageSize = PAGE_SIZE) {
-    setLastIndex((previousIndex) => previousIndex + pageSize);
+  async function getPosts(_filter: PostFilterParams) {
+    const _postList = await getServerPostList(_filter);
+    setTotal(_postList.total);
+    return _postList.items;
   }
 
-  function handleSearch(searchValue: string) {
-    if (!searchValue) {
-      setPostList(posts);
-      const _postDisplay = posts.slice(0, PAGE_SIZE);
-      setPostListDisplay(_postDisplay);
-      setLastIndex(_postDisplay.length - 1);
+  async function loadMore() {
+    const _filter = {
+      ...filter,
+      page: currentPage + 1,
+      per_page: PAGE_SIZE,
+    };
+    if (searchText) {
+      _filter.search = searchText;
     }
-    if (searchValue) {
-      const result = posts.filter((post) =>
-        removeAccentsLetterOnly(post.title)
-          .toLocaleLowerCase()
-          ?.match(removeAccentsLetterOnly(searchValue.toLocaleLowerCase()))
-      );
-      setPostList(result);
-      const _postDisplay = result.slice(0, PAGE_SIZE);
-      setPostListDisplay(_postDisplay);
-      setLastIndex(_postDisplay.length - 1);
-    }
-  }
-
-  const handleSearchDebounce = useCallback(debounce(handleSearch, 500), []);
-
-  function loadMore() {
-    if (postList.length === postListDisplay.length) return;
-    const _postNext = postList.slice(lastIndex + 1, lastIndex + 1 + PAGE_SIZE);
-    addLastIndex();
-    setPostListDisplay((previousPostList) =>
-      previousPostList.concat(_postNext)
-    );
+    const _postList = await getPosts(_filter);
+    setPostList((previous) => [...previous, ..._postList]);
+    setCurrentPage((previous) => previous + 1);
     return true;
   }
 
@@ -68,29 +65,42 @@ export function PostList({ posts }: PostListProps) {
   }
 
   useEffect(() => {
-    setPostList(posts);
-    setPostListDisplay(posts.slice(0, PAGE_SIZE));
-    setLastIndex(posts.length >= PAGE_SIZE ? PAGE_SIZE : PAGE_SIZE - 1);
-  }, [posts]);
-
-  useEffect(() => {
     const infiniteScrollDebounce = debounce(infiniteScrol, 500);
     document.addEventListener("scroll", infiniteScrollDebounce);
     return () => document.removeEventListener("scroll", infiniteScrollDebounce);
-  }, [lastIndex]);
+  }, []);
+
+  async function initPostList() {
+    const _filter = {
+      ...filter,
+      page: 1,
+      per_page: PAGE_SIZE,
+    };
+    if (searchText) {
+      _filter.search = searchText;
+    }
+    const _postList = await getPosts(_filter);
+    setPostList(_postList);
+    setCurrentPage(1);
+  }
 
   useEffect(() => {
-    handleSearchDebounce(searchText);
+    initPostList();
   }, [searchText]);
 
   return (
     <>
       <Box className="p-2">
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSearchText(searchTextTemp);
+          }}
+        >
           <TextField.Root
             placeholder="Tìm kiếm"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
+            value={searchTextTemp}
+            onChange={(e) => setSearchTextTemp(e.target.value)}
             radius="full"
             color="indigo"
             variant="soft"
@@ -98,16 +108,15 @@ export function PostList({ posts }: PostListProps) {
             <TextField.Slot>
               <MagnifyingGlassIcon height="16" width="16" />
             </TextField.Slot>
-            {searchText?.length > 0 && (
+            {searchTextTemp?.length > 0 && (
               <TextField.Slot>
                 <IconButton
                   title="Xóa"
                   variant="ghost"
                   type="button"
                   onClick={() => {
+                    setSearchTextTemp("");
                     setSearchText("");
-                    setPostList(posts);
-                    setPostListDisplay(posts);
                   }}
                   radius="full"
                 >
@@ -120,26 +129,27 @@ export function PostList({ posts }: PostListProps) {
       </Box>
       <ResponsiveMasonry>
         <Masonry>
-          {postListDisplayDebouce.map((post) => (
-            <div className="w-full p-2" key={post.slug}>
+          {postList.map((post) => (
+            <div className="w-full p-2" key={post.id}>
               <PostCard
-                key={post.slug}
-                title={post.title}
+                key={post.id}
+                title={post.title.rendered}
                 slug={post.slug}
-                description={post.description}
-                html={post.html}
+                description={clip(post.content.rendered, 500, {
+                  html: true,
+                  maxLines: 5,
+                })}
+                html={post.content.rendered}
               />
             </div>
           ))}
         </Masonry>
       </ResponsiveMasonry>
-      {
-        postListDisplayDebouce.length !== postList.length &&
+      {postList.length < total && (
         <div className="flex justify-center w-full" ref={loadPoint}>
           <DoubleArrowDownIcon className="animate-bounce text-pink-700 w-6 h-6" />
         </div>
-      }
-
+      )}
     </>
   );
 }

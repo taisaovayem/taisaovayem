@@ -1,16 +1,12 @@
 "use client";
-import { Post } from "@/helpers";
 import { Box, IconButton } from "@radix-ui/themes";
 import { useRef } from "react";
 import PostTitle from "./PostTitle";
 import * as htmlToImage from "html-to-image";
-import {
-  CopyIcon,
-  Cross1Icon,
-  Link2Icon,
-} from "@radix-ui/react-icons";
+import { CopyIcon, Cross1Icon, Link2Icon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import ClipboardContent from "./ClipboardContent";
+import { Post } from "@/api";
 
 type PostContentProps = {
   post: Post;
@@ -40,10 +36,10 @@ export function PostContent({ post }: PostContentProps) {
         style={{ background: "var(--gray-a3)" }}
       >
         <header className="mb-6">
-          <PostTitle>{post.title}</PostTitle>
+          <PostTitle>{post.title.rendered}</PostTitle>
         </header>
         <div
-          dangerouslySetInnerHTML={{ __html: post.html }}
+          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           className="text-gray-500"
         ></div>
         <div className="hidden md:absolute right-3 top-3 md:grid gap-x-2 grid-cols-3">
@@ -86,8 +82,8 @@ export function PostContent({ post }: PostContentProps) {
       <div dangerouslySetInnerHTML={{ __html: "<!--googleoff: all-->" }} />
       <div className="w-0 h-0 overflow-hidden">
         <ClipboardContent
-          title={post.title}
-          html={post.html}
+          title={post.title.rendered}
+          html={post.content.rendered}
           ref={contentRef}
         />
       </div>
