@@ -10,5 +10,5 @@ services:
     environment:
       VERCEL_PROJECT_PRODUCTION_URL: taisaovayem.com
       FACEBOOK_APP_ID: "541539815528484"
-      API: wordpress
+      API: https://admin.taisaovayem.com/wp-json/wp/v2
 
