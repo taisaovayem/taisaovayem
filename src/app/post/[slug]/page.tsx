@@ -45,10 +45,10 @@ export default async function PostPage({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
-  const categories = await getCategoryList({
+  const categories = post.categories.length ? await getCategoryList({
     include: post.categories.join(","),
-  });
-  const tags = await getTagList({ include: post.tags.join(",") });
+  }) : [];
+  const tags = post.tags.length ? await getTagList({ include: post.tags.join(",") }) : [];
 
   return (
     <>
