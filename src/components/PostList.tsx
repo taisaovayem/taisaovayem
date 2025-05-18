@@ -38,11 +38,14 @@ export function PostList({ filter }: PostListProps) {
 
   async function getPosts(_filter: PostFilterParams) {
     const _postList = await getServerPostList(_filter);
-    setTotal(_postList.total);
+    setTotal(Number(_postList.total));
     return _postList.items;
   }
 
   async function loadMore() {
+    if (postList.length >= total) {
+      return;
+    }
     const _filter = {
       ...filter,
       page: currentPage + 1,
@@ -68,7 +71,7 @@ export function PostList({ filter }: PostListProps) {
     const infiniteScrollDebounce = debounce(infiniteScrol, 500);
     document.addEventListener("scroll", infiniteScrollDebounce);
     return () => document.removeEventListener("scroll", infiniteScrollDebounce);
-  }, []);
+  }, [total, postList]);
 
   async function initPostList() {
     const _filter = {
@@ -134,18 +137,18 @@ export function PostList({ filter }: PostListProps) {
         {/* @ts-ignore */}
         <Masonry>
           {postList.map((post) => (
-        <div className="w-full p-2" key={post.id}>
-          <PostCard
-            key={post.id}
-            title={post.title.rendered}
-            slug={post.slug}
-            description={clip(post.content.rendered, 500, {
-          html: true,
-          maxLines: 5,
-            })}
-            html={post.content.rendered}
-          />
-        </div>
+            <div className="w-full p-2" key={post.id}>
+              <PostCard
+                key={post.id}
+                title={post.title.rendered}
+                slug={post.slug}
+                description={clip(post.content.rendered, 500, {
+                  html: true,
+                  maxLines: 5,
+                })}
+                html={post.content.rendered}
+              />
+            </div>
           ))}
         </Masonry>
       </ResponsiveMasonry>
