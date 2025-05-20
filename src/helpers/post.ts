@@ -10,3 +10,10 @@ export function getThumbnail(post: Post) {
     ?.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
   return sources;
 }
+
+export function replaceRoute(content: string): string {
+  return content.replace(
+    /https?:\/\/admin\.taisaovayem\.com/g,
+    ""
+  );
+}

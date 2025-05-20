@@ -1,4 +1,5 @@
 "use client";
+import { replaceRoute } from "@/helpers";
 import { Text } from "@radix-ui/themes";
 import { forwardRef } from "react";
 
@@ -24,7 +25,7 @@ export const ClipboardContent = forwardRef<
       <div
         className="bg-cover absolute -left-6 -top-6 -right-6 -bottom-5 -z-0 bg-slate-600"
         style={{
-          backgroundImage: `url('${background}')`,
+          backgroundImage: `url('${replaceRoute(background)}')`,
           filter: "saturate(180%) blur(20px)",
         }}
       ></div>
@@ -35,15 +36,16 @@ export const ClipboardContent = forwardRef<
           size="6"
           weight="bold"
           className="mb-4 text-white mix-blend-overlay"
-        >
-          {title}
-        </Text>
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
         {html ? (
           <Text
             as="div"
             size="2"
             className="mix-blend-screen text-white"
-            dangerouslySetInnerHTML={{ __html: html }}
+            dangerouslySetInnerHTML={{
+              __html: replaceRoute(html),
+            }}
           ></Text>
         ) : null}
       </div>
