@@ -33,9 +33,9 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
   return (
     <Card className={`shadow-lg ${styles["post-card"]}`}>
       <Link href={`/post/${slug}`}>
-        <Text as="div" size="2" weight="bold" className="mb-4">
+        {Boolean(title) && <Text as="div" size="2" weight="bold" className="mb-4">
           {title}
-        </Text>
+        </Text>}
         <Text
           as="div"
           color="gray"

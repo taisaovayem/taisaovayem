@@ -36,9 +36,11 @@ export function PostContent({ post }: PostContentProps) {
         className=" rounded-xl mb-8 p-4 md:p-9 relative"
         style={{ background: "var(--gray-a3)" }}
       >
-        <header className="mb-6">
-          <PostTitle>{post.title.rendered}</PostTitle>
-        </header>
+        {Boolean(post.title.rendered) && (
+          <header className="mb-6">
+            <PostTitle>{post.title.rendered}</PostTitle>
+          </header>
+        )}
         <div
           dangerouslySetInnerHTML={{
             __html: replaceRoute(post.content.rendered),
@@ -73,7 +75,9 @@ export function PostContent({ post }: PostContentProps) {
             <IconButton
               title="Quay lại"
               variant="soft"
-              onClick={() => router.back()}
+              onClick={() =>
+                history.length > 2 ? router.back() : router.push("/")
+              }
               color="tomato"
               radius="full"
             >
