@@ -1,10 +1,9 @@
 "use client";
 import { Heading } from "@radix-ui/themes";
-import { ReactNode } from "react";
 import { renderToString } from "react-dom/server";
 
 type PostTitleProps = {
-  children: ReactNode;
+  children: string;
 };
 
 export function PostTitle({ children }: PostTitleProps) {
@@ -12,7 +11,12 @@ export function PostTitle({ children }: PostTitleProps) {
     navigator.clipboard.writeText(renderToString(children));
   }
 
-  return <Heading onClick={copyTitle}>{children}</Heading>;
+  return (
+    <Heading
+      onClick={copyTitle}
+      dangerouslySetInnerHTML={{ __html: children }}
+    />
+  );
 }
 
 export default PostTitle;
