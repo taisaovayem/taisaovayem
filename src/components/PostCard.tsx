@@ -5,6 +5,7 @@ import { useRef } from "react";
 import * as htmlToImage from "html-to-image";
 import { CopyIcon, Link2Icon } from "@radix-ui/react-icons";
 import styles from "./PostCard.module.css";
+import { replaceRoute } from "@/helpers";
 
 export type PostCardProps = {
   title: string;
@@ -46,7 +47,7 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
           as="div"
           color="gray"
           size="2"
-          dangerouslySetInnerHTML={{ __html: description }}
+          dangerouslySetInnerHTML={{ __html: replaceRoute(description) }}
         ></Text>
       </Link>
       <div className={`absolute right-2 top-2 hidden ${styles["copy-button"]}`}>
