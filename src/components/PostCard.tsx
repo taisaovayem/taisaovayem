@@ -33,9 +33,15 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
   return (
     <Card className={`shadow-lg ${styles["post-card"]}`}>
       <Link href={`/post/${slug}`}>
-        {Boolean(title) && <Text as="div" size="2" weight="bold" className="mb-4">
-          {title}
-        </Text>}
+        {Boolean(title) && (
+          <Text
+            as="div"
+            size="2"
+            weight="bold"
+            className="mb-4"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+        )}
         <Text
           as="div"
           color="gray"
@@ -59,7 +65,13 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
           <IconButton
             title="Copy link"
             variant="soft"
-            onClick={() => navigator.clipboard.writeText(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? 'taisaovayem.com'}/post/${slug}`)}
+            onClick={() =>
+              navigator.clipboard.writeText(
+                `https://${
+                  process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "taisaovayem.com"
+                }/post/${slug}`
+              )
+            }
             color="green"
             radius="full"
           >
