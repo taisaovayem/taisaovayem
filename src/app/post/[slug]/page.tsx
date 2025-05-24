@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { PostContent } from "@/components";
 import set from "lodash/set";
 import { getPostBySlug, getCategoryList, getTagList } from "@/api"; // cập nhật lại đường dẫn nếu cần
+import { decode } from "he";
 
 type PostProps = {
   slug: string;
@@ -31,11 +32,11 @@ export async function generateMetadata({
   const thumbnail = getThumbnail(post);
 
   const metaData: Metadata = {
-    title: post.title.rendered,
+    title: decode(post.title.rendered),
     description:
       post.content.rendered?.replace(/<[^>]+>/g, "") || post.title.rendered,
     openGraph: {
-      title: post.title.rendered,
+      title: decode(post.title.rendered),
       description:
         post.content.rendered?.replace(/<[^>]+>/g, "") || post.title.rendered,
     },
