@@ -14,7 +14,7 @@ export async function GET(
   const targetUrl = `https://admin.taisaovayem.com/wp-content/uploads/${slugPath}`;
 
   try {
-    const externalRes = await fetch(targetUrl, {cache: "no-store"});
+    const externalRes = await fetch(targetUrl);
     if (!externalRes.ok) {
       return new NextResponse("Image not found", { status: 404 });
     }
@@ -27,7 +27,7 @@ export async function GET(
       status: 200,
       headers: {
         "Content-Type": contentType,
-        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        "Cache-Control": "public, max-age=3600",
       },
     });
   } catch (err) {
