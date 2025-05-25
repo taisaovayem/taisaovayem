@@ -1,7 +1,6 @@
 "use client";
 import { Heading } from "@radix-ui/themes";
 import { useRef } from "react";
-import { renderToString } from "react-dom/server";
 
 type PostTitleProps = {
   children: string;

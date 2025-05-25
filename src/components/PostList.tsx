@@ -10,8 +10,8 @@ import {
 import debounce from "lodash/debounce";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { Post, PostFilterParams, PostList as PostListType } from "@/api";
-import clip from "@/helpers/text-clipper";
 import axios from "axios";
+import { getDescription } from "@/helpers";
 
 type SearchProps = {
   onSubmit: (searchValue: string) => void;
@@ -19,12 +19,14 @@ type SearchProps = {
 
 function Search({ onSubmit }: SearchProps) {
   const [searchTextTemp, setSearchTextTemp] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
   return (
     <Box className="p-2">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           onSubmit(searchTextTemp);
+          inputRef.current?.blur();
         }}
       >
         <TextField.Root
@@ -34,6 +36,7 @@ function Search({ onSubmit }: SearchProps) {
           radius="full"
           color="indigo"
           variant="soft"
+          ref={inputRef}
         >
           <TextField.Slot>
             <MagnifyingGlassIcon height="16" width="16" />
@@ -162,10 +165,7 @@ export function PostList({ filter }: PostListProps) {
                 key={post.id}
                 title={post.title.rendered}
                 slug={post.slug}
-                description={clip(post.content.rendered, 500, {
-                  html: true,
-                  maxLines: 5,
-                })}
+                description={getDescription(post.content.rendered)}
                 html={post.content.rendered}
               />
             </div>
