@@ -37,6 +37,7 @@ function Search({ onSubmit }: SearchProps) {
           color="indigo"
           variant="soft"
           ref={inputRef}
+          className="!text-base"
         >
           <TextField.Slot>
             <MagnifyingGlassIcon height="16" width="16" />
