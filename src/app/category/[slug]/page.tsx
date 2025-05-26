@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Badge, Box, Heading } from "@radix-ui/themes";
-import { PostList } from "@/components";
+import { NotFound, PostList } from "@/components";
 import { getCategoryList } from "@/api";
 
 type CategoryProps = {
@@ -18,6 +18,18 @@ export async function generateMetadata({
   });
   const category = categories[0];
 
+  if (!category) {
+    return {
+      title: "Oh oh! Trang bạn truy cập không tồn tại rồi",
+      description: "Trang bạn yêu cầu hiện không có rùi!",
+      openGraph: {
+        title: "Oh oh! Trang bạn truy cập không tồn tại rồi",
+        description: "Trang bạn yêu cầu hiện không có rùi!",
+        images: "/404.jpg",
+      },
+    };
+  }
+
   return {
     title: "Chuyên mục: " + category?.name,
     description: category?.description ?? category?.name,
@@ -34,6 +46,10 @@ export default async function Category({
     slug,
   });
   const category = categories[0];
+
+  if (!category) {
+    return <NotFound />;
+  }
 
   return (
     <>

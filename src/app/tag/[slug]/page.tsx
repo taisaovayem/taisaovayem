@@ -1,6 +1,6 @@
 import { Badge, Box, Heading } from "@radix-ui/themes";
 import { Metadata } from "next";
-import { PostList } from "@/components";
+import { PostList, NotFound } from "@/components";
 import { getTagList } from "@/api";
 
 type TagProps = {
@@ -15,7 +15,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const tags = await getTagList({ slug });
   const tag = tags[0];
-
+  if (!tag) {
+    return {
+      title: "Oh oh! Trang bạn truy cập không tồn tại rồi",
+      description: "Trang bạn yêu cầu hiện không có rùi!",
+      openGraph: {
+        title: "Oh oh! Trang bạn truy cập không tồn tại rồi",
+        description: "Trang bạn yêu cầu hiện không có rùi!",
+        images: "/404.jpg",
+      },
+    };
+  }
   return {
     title: "Tag: " + tag?.name,
     description: tag?.description ?? tag?.name,
@@ -30,7 +40,9 @@ export default async function Category({
   const { slug } = await params;
   const tags = await getTagList({ slug });
   const tag = tags[0];
-
+  if (!tag) {
+    return <NotFound />;
+  }
   return (
     <>
       <Box

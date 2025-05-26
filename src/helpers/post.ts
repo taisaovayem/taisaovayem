@@ -13,7 +13,9 @@ export function getThumbnail(post: Post) {
 }
 
 export function replaceRoute(content: string): string {
-  return content.replace(/https?:\/\/admin\.taisaovayem\.com/g, "");
+  return content
+    .replace(/https?:\/\/admin\.taisaovayem\.com/g, "")
+    .replace(/wp-content\/uploads/g, "uploads");
 }
 
 export function getDescription(content: string) {
