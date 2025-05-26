@@ -1,5 +1,6 @@
 import { HomeIcon } from "@radix-ui/react-icons";
 import { Link } from "@radix-ui/themes";
+import QuickNavigate from "./QuickNavigage";
 
 export function Footer() {
   return (
@@ -10,6 +11,7 @@ export function Footer() {
         </span>{" "}
         Trang chủ
       </Link>
+      <QuickNavigate />
     </footer>
   );
 }
