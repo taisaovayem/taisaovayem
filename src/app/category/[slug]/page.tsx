@@ -33,6 +33,10 @@ export async function generateMetadata({
   return {
     title: "Chuyên mục: " + category?.name,
     description: category?.description ?? category?.name,
+    openGraph: {
+      title: "Chuyên mục: " + category?.name,
+      description: category?.description ?? category?.name,
+    },
   };
 }
 

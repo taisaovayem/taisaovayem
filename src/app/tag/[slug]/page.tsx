@@ -29,6 +29,10 @@ export async function generateMetadata({
   return {
     title: "Tag: " + tag?.name,
     description: tag?.description ?? tag?.name,
+    openGraph: {
+      title: "Tag: " + tag?.name,
+      description: tag?.description ?? tag?.name,
+    },
   };
 }
 
