@@ -4,13 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "copy-nojekyll": "cp .nojekyll docs/.nojekyll",
-    "copy-cname": "cp CNAME docs/CNAME",
-    "build": "next build && npm run copy-nojekyll && npm run copy-cname",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "release": "npm run build && git add -f ./docs",
-    "release-auto": "npm run build && git add -f ./docs && git commit -m 'release auto' && git push"
+    "lint": "next lint"
   },
   "dependencies": {
     "@next/third-parties": "15.0.4",
