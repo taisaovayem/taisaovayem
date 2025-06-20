@@ -44,6 +44,8 @@ export async function generateMetadata({
 
   if (thumbnail && thumbnail?.length) {
     set(metaData, ["openGraph", "images"], thumbnail[0]);
+  } else {
+    set(metaData, ["openGraph", "images"], `/api/og?slug=${slug}`);
   }
 
   return metaData;
