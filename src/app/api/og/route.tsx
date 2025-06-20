@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
         process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "taisaovayem.com"
       }/quote-background.jpg`;
 
-  return new ImageResponse(
+  const image = new ImageResponse(
     (
       <div
         style={{
@@ -81,4 +81,12 @@ export async function GET(req: NextRequest) {
       height: 630,
     }
   );
+
+  return new Response(image.body, {
+    status: 200,
+    headers: {
+      "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=86400, immutable",
+    },
+  });
 }
