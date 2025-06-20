@@ -12,13 +12,9 @@ export async function GET(req: NextRequest) {
   const thumbnail = post.content.rendered
     ?.match(/<img [^>]*src="[^"]*"[^>]*>/gm)
     ?.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
-    console.log("process.env.VERCEL_PROJECT_PRODUCTION_URL", process.env.VERCEL_PROJECT_PRODUCTION_URL)
   const background = thumbnail?.length
     ? thumbnail[0]
-    : `https://${
-        process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "taisaovayem.com"
-      }/quote-background.jpg`;
-console.log("background", background)
+    : "https://taisaovayem.com/quote-background.jpg";
   const image = new ImageResponse(
     (
       <div
