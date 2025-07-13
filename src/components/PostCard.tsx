@@ -70,7 +70,7 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
               navigator.clipboard.writeText(
                 `https://${
                   process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "taisaovayem.com"
-                }/post/${slug}`
+                }/${slug}`
               )
             }
             color="green"
