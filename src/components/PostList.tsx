@@ -122,7 +122,7 @@ export function PostList({ filter }: PostListProps) {
 
   function infiniteScrol() {
     const loadPointPosition = loadPoint.current?.offsetTop ?? 0;
-    if (loadPointPosition < window.scrollY + window.innerHeight) {
+    if (loadPointPosition < window.scrollY + window.innerHeight && !isLoading) {
       loadMore();
     }
   }
