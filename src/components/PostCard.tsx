@@ -33,7 +33,7 @@ export function PostCard({ slug, title, description, html }: PostCardProps) {
 
   return (
     <Card className={`shadow-lg ${styles["post-card"]}`}>
-      <Link href={`/post/${slug}`}>
+      <Link href={`/${slug}`}>
         {Boolean(title) && (
           <Text
             as="div"
