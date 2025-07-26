@@ -3,7 +3,7 @@ import { Box, IconButton } from "@radix-ui/themes";
 import { useRef } from "react";
 import PostTitle from "./PostTitle";
 import * as htmlToImage from "html-to-image";
-import { CopyIcon, Cross1Icon, Link2Icon } from "@radix-ui/react-icons";
+import { CopyIcon, Cross1Icon, Link2Icon, HomeIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import ClipboardContent from "./ClipboardContent";
 import { Post } from "@/api";
@@ -73,15 +73,15 @@ export function PostContent({ post }: PostContentProps) {
           </div>
           <div>
             <IconButton
-              title="Quay lại"
+              title={history?.length > 2 ? "Quay lại" : "Trang chủ"}
               variant="soft"
               onClick={() =>
-                history.length > 2 ? router.back() : router.push("/")
+                history?.length > 2 ? router.back() : router.push("/")
               }
               color="tomato"
               radius="full"
             >
-              <Cross1Icon />
+              {history?.length > 2 ? <Cross1Icon /> : <HomeIcon />}
             </IconButton>
           </div>
         </div>
