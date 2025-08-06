@@ -1,6 +1,15 @@
 import { Post } from "@/api";
 import { convert } from "html-to-text";
 
+export function replaceRoute(content: string): string {
+  if (!content) {
+    return "";
+  }
+  return content
+    .replace(/https?:\/\/admin\.taisaovayem\.com/g, "")
+    .replace(/wp-content\/uploads/g, "uploads");
+}
+
 export function getThumbnail(post: Post) {
   const postContentHtml = post.content.rendered;
   if (!postContentHtml) {
@@ -8,15 +17,10 @@ export function getThumbnail(post: Post) {
   }
   const sources = postContentHtml
     ?.match(/<img [^>]*src="[^"]*"[^>]*>/gm)
-    ?.map((x) => x.replace(/.*src="([^"]*)".*/, "$1"));
+    ?.map((x) => replaceRoute(x.replace(/.*src="([^"]*)".*/, "$1")));
   return sources;
 }
 
-export function replaceRoute(content: string): string {
-  return content
-    .replace(/https?:\/\/admin\.taisaovayem\.com/g, "")
-    .replace(/wp-content\/uploads/g, "uploads");
-}
 
 export function getDescription(content: string) {
   const contentSplit = content.split("<br />");
