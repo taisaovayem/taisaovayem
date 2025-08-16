@@ -1,4 +1,4 @@
-import { HomeIcon } from "@radix-ui/react-icons";
+import { HomeIcon, InfoCircledIcon } from "@radix-ui/react-icons";
 import { Link } from "@radix-ui/themes";
 import QuickNavigate from "./QuickNavigage";
 
@@ -10,6 +10,13 @@ export function Footer() {
           <HomeIcon />
         </span>{" "}
         Trang chủ
+      </Link>
+      <Link href="/about">
+        {" "}
+        <span className="inline-block align-middle">
+          <InfoCircledIcon />
+        </span>{" "}
+        Về taisaovayem
       </Link>
       <QuickNavigate />
     </footer>

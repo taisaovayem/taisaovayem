@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Theme, Container } from "@radix-ui/themes";
-export default function PrivatePolicyLayout({
+export default function AboutLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

@@ -73,10 +73,10 @@ export function PostContent({ post }: PostContentProps) {
           </div>
           <div>
             <IconButton
-              title={history?.length > 2 ? "Quay lại" : "Trang chủ"}
+              title={window?.history?.length > 2 ? "Quay lại" : "Trang chủ"}
               variant="soft"
               onClick={() =>
-                history?.length > 2 ? router.back() : router.push("/")
+                window?.history?.length > 2 ? router.back() : router.push("/")
               }
               color="tomato"
               radius="full"
