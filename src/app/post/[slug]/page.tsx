@@ -32,10 +32,6 @@ export async function generateMetadata({
   const thumbnail = getThumbnail(post);
 
   const metaData: Metadata = {
-    robots: {
-      index: true,
-      follow: true,
-    },
     title: decode(post.title.rendered),
     description:
       post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() || post.title.rendered,

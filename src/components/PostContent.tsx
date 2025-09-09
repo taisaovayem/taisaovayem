@@ -73,15 +73,15 @@ export function PostContent({ post }: PostContentProps) {
           </div>
           <div>
             <IconButton
-              title={window?.history?.length > 2 ? "Quay lại" : "Trang chủ"}
+              title={typeof window !== "undefined" && window?.history?.length > 2 ? "Quay lại" : "Trang chủ"}
               variant="soft"
               onClick={() =>
-                window?.history?.length > 2 ? router.back() : router.push("/")
+                typeof window !== "undefined" && window?.history?.length > 2 ? router.back() : router.push("/")
               }
               color="tomato"
               radius="full"
             >
-              {history?.length > 2 ? <Cross1Icon /> : <HomeIcon />}
+              {typeof window !== "undefined" && history?.length > 2 ? <Cross1Icon /> : <HomeIcon />}
             </IconButton>
           </div>
         </div>
