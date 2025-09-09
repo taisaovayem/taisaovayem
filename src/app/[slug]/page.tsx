@@ -34,11 +34,11 @@ export async function generateMetadata({
   const metaData: Metadata = {
     title: decode(post.title.rendered),
     description:
-      post.content.rendered?.replace(/<[^>]+>/g, "") || post.title.rendered,
+      post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() || post.title.rendered,
     openGraph: {
       title: decode(post.title.rendered),
       description:
-        post.content.rendered?.replace(/<[^>]+>/g, "") || post.title.rendered,
+        post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() || post.title.rendered,
     },
   };
 
