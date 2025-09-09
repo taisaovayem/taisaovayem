@@ -32,6 +32,10 @@ export async function generateMetadata({
   const thumbnail = getThumbnail(post);
 
   const metaData: Metadata = {
+    robots: {
+      index: true,
+      follow: true,
+    },
     title: decode(post.title.rendered),
     description:
       post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() || post.title.rendered,
@@ -41,7 +45,7 @@ export async function generateMetadata({
         post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() || post.title.rendered,
     },
   };
-
+  
   if (thumbnail && thumbnail?.length) {
     set(metaData, ["openGraph", "images"], thumbnail[0]);
   } else {
