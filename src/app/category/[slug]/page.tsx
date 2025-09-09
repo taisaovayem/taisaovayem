@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { Badge, Box, Heading } from "@radix-ui/themes";
 import { NotFound, PostList } from "@/components";
 import { getCategoryList } from "@/api";
+import { redirect } from "next/navigation";
+import { LANG_CATEGORY_ID } from "@/constants";
 
 type CategoryProps = {
   slug: string;
@@ -50,9 +52,11 @@ export default async function Category({
     slug,
   });
   const category = categories[0];
-
   if (!category) {
     return <NotFound />;
+  }
+  if (category.id === LANG_CATEGORY_ID) {
+    redirect("/lang")
   }
 
   return (
