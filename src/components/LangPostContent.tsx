@@ -3,6 +3,7 @@ import { Box, Container } from "@radix-ui/themes";
 import PostTitle from "./PostTitle";
 import { Post } from "@/api";
 import { replaceRoute } from "@/helpers";
+import styles from "./LangPostConent.module.css"
 
 type PostContentProps = {
   post: Post;
@@ -27,7 +28,7 @@ export function LangPostContent({ post }: PostContentProps) {
             dangerouslySetInnerHTML={{
               __html: replaceRoute(post.content.rendered),
             }}
-            className="text-gray-950 dark:text-gray-200"
+            className={`text-gray-950 dark:text-gray-200 ${styles["content"]}`}
           ></div>
         </Box>
       </Container>
