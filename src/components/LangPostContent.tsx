@@ -11,7 +11,7 @@ type PostContentProps = {
 export function LangPostContent({ post }: PostContentProps) {
   return (
     <>
-      <Box className="h-[50vh] w-full">
+      <Box className="h-[50vh] w-full [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)]">
         <img src={replaceRoute(post.jetpack_featured_media_url)} className="h-full w-full object-cover"/>
       </Box>
       <Container size="3">
