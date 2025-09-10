@@ -1,4 +1,4 @@
-import { getThumbnail } from "@/helpers";
+import { getThumbnail, replaceRoute } from "@/helpers";
 import Link from "next/link";
 import { Heading, Flex, Badge, Text } from "@radix-ui/themes";
 import { Metadata } from "next";
@@ -45,7 +45,13 @@ export async function generateMetadata({
     },
   };
 
-  if (thumbnail && thumbnail?.length) {
+  if (post.jetpack_featured_media_url) {
+    set(
+      metaData,
+      ["openGraph", "images"],
+      replaceRoute(post.jetpack_featured_media_url)
+    );
+  } else if (thumbnail && thumbnail?.length) {
     set(metaData, ["openGraph", "images"], thumbnail[0]);
   } else {
     set(metaData, ["openGraph", "images"], `/api/og?slug=${slug}`);

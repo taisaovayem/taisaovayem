@@ -6,10 +6,11 @@ import { LANG_CATEGORY_ID } from "@/constants";
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Lắng",
-    description: "Để cảm xúc lắng đọng",
+    description: "Nơi cảm xúc lắng đọng",
     openGraph: {
       title: "Lắng",
-      description: "Để cảm xúc lắng đọng",
+      description: "Nơi cảm xúc lắng đọng",
+      images: "https://taisaovayem.com/lang-background.jpeg"
     },
   };
 }
@@ -21,7 +22,7 @@ export default async function Lang() {
         <Heading size="9" as="h1" className="text-white font-imperial-script">
           Lắng
         </Heading>
-        <Heading size="2" className="text-white font-meow-script">Để cảm xúc lắng đọng</Heading>
+        <Heading size="2" className="text-white font-meow-script">Nơi cảm xúc lắng đọng</Heading>
       </Flex>
       <Container size="4" className="p-4 xl:p-0">
         <LangPostList
