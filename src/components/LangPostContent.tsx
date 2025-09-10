@@ -12,7 +12,7 @@ export function LangPostContent({ post }: PostContentProps) {
   return (
     <>
       <Box className="h-[50vh] w-full">
-        <img src={post.jetpack_featured_media_url} className="h-full w-full object-cover"/>
+        <img src={replaceRoute(post.jetpack_featured_media_url)} className="h-full w-full object-cover"/>
       </Box>
       <Container size="3">
         <Box
