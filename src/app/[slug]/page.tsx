@@ -2,10 +2,11 @@ import { getThumbnail } from "@/helpers";
 import Link from "next/link";
 import { Heading, Flex, Badge, Text } from "@radix-ui/themes";
 import { Metadata } from "next";
-import { NotFound, PostContent } from "@/components";
+import { LangPostContent, NotFound, PostContent } from "@/components";
 import set from "lodash/set";
 import { getPostBySlug, getCategoryList, getTagList } from "@/api"; // cập nhật lại đường dẫn nếu cần
 import { decode } from "he";
+import { LANG_CATEGORY_ID } from "@/constants";
 
 type PostProps = {
   slug: string;
@@ -34,14 +35,16 @@ export async function generateMetadata({
   const metaData: Metadata = {
     title: decode(post.title.rendered),
     description:
-      post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() || post.title.rendered,
+      post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() ||
+      post.title.rendered,
     openGraph: {
       title: decode(post.title.rendered),
       description:
-        post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() || post.title.rendered,
+        post.content.rendered?.replace(/<[^>]+>/g, "")?.trim() ||
+        post.title.rendered,
     },
   };
-  
+
   if (thumbnail && thumbnail?.length) {
     set(metaData, ["openGraph", "images"], thumbnail[0]);
   } else {
@@ -69,6 +72,9 @@ export default async function PostPage({
   const tags = post.tags.length
     ? await getTagList({ include: post.tags.join(",") })
     : [];
+
+  if (post.categories.find((categoryId) => categoryId === LANG_CATEGORY_ID))
+    return <LangPostContent post={post} />;
 
   return (
     <>

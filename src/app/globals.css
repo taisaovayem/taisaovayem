@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-imperial-script: "Imperial Script", cursive;
+  --font-meow-script: "Meow Script", cursive;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,4 +32,29 @@ blockquote {
   box-sizing: border-box;
   border-left: max(var(--space-1), 0.25em) solid var(--accent-a6);
   padding-left: min(var(--space-5), max(var(--space-3), 0.5em));
+}
+
+.wp-block-image {
+  margin: 0 0 1em;
+}
+.wp-block-image .aligncenter,
+.wp-block-image .alignleft,
+.wp-block-image .alignright,
+.wp-block-image.aligncenter,
+.wp-block-image.alignleft,
+.wp-block-image.alignright {
+  display: table;
+}
+.wp-block-image .aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  .entry-content img {
+    max-width: 1200px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

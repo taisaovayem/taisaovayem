@@ -21,9 +21,8 @@ export function getThumbnail(post: Post) {
   return sources;
 }
 
-
 export function getDescription(content: string) {
-  const contentSplit = content.split("<br />");
+  const contentSplit = content.split(/<br\s*\/?>/i);
   let countCharacter = 0;
   const finalContent = contentSplit.reduce((previous, current) => {
     countCharacter += convert(current).length;

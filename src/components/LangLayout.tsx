@@ -1,6 +1,5 @@
-import { Footer } from "@/components";
 import * as React from "react";
-import { Theme, Container } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import { ThemeProvider } from "next-themes";
 
 export function LangLayout({
@@ -11,8 +10,7 @@ export function LangLayout({
   return (
     <ThemeProvider attribute="class">
       <Theme>
-        Comming soon...
-        <main className="pt-6">{children}</main>
+        <main className="bg-[url(/lang-background.jpeg)] bg-no-repeat bg-top bg-center bg-[length:100%_auto] bg-fixed w-full min-h-screen">{children}</main>
       </Theme>
     </ThemeProvider>
   );

@@ -8,3 +8,6 @@ export * from "./PostContent";
 export * from "./ClipboardContent";
 export * from "./NotFound";
 export * from "./LangLayout";
+export * from "./LangPostList";
+export * from "./LangPostCard";
+export * from "./LangPostContent";

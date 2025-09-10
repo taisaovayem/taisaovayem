@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { Box } from "@radix-ui/themes";
-import { PostList } from "@/components";
+import { Heading, Flex, Container } from "@radix-ui/themes";
+import { LangPostList } from "@/components";
 import { LANG_CATEGORY_ID } from "@/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,9 +17,17 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Lang() {
   return (
     <>
-      <Box className="-mx-2">
-        <PostList filter={{ categories: LANG_CATEGORY_ID.toLocaleString() }} />
-      </Box>
+      <Flex className="p-4" justify="between" align="center">
+        <Heading size="9" as="h1" className="text-white font-imperial-script">
+          Lắng
+        </Heading>
+        <Heading size="2" className="text-white font-meow-script">Để cảm xúc lắng đọng</Heading>
+      </Flex>
+      <Container size="4" className="p-4 xl:p-0">
+        <LangPostList
+          filter={{ categories: LANG_CATEGORY_ID.toLocaleString() }}
+        />
+      </Container>
     </>
   );
 }

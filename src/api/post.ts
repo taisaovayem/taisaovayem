@@ -11,6 +11,10 @@ export type Post = {
   };
   categories: number[]; // category ids
   tags: number[]; // tag ids
+  excerpt: {
+    rendered: string; // html
+  },
+  jetpack_featured_media_url: string,
 };
 
 export type PostList = {

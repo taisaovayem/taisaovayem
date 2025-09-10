@@ -3,6 +3,19 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Imperial_Script, Meow_Script } from "next/font/google";
+
+const imperialScript = Imperial_Script({
+  variable: "--font-imperial-script",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const meowScript = Meow_Script({
+  subsets: ["latin"],
+  variable: "--font-meow-script",
+  weight: "400",
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,7 +38,7 @@ export function generateViewport(): Viewport {
     colorScheme: "dark light",
     initialScale: 1,
     width: "device-width",
-  }
+  };
 }
 
 export default function RootLayout({
@@ -36,11 +49,13 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-transparent`}
+        className={`${geistSans.variable} ${geistMono.variable} ${imperialScript.variable} ${meowScript.variable} antialiased bg-transparent`}
       >
         {children}
       </body>
-      {process.env.NODE_ENV !== 'development' && <GoogleAnalytics gaId="G-RZ3CZ4ZFLL" />}
+      {process.env.NODE_ENV !== "development" && (
+        <GoogleAnalytics gaId="G-RZ3CZ4ZFLL" />
+      )}
     </html>
   );
 }

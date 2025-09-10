@@ -13,7 +13,7 @@ export default async function PostLayout({
 }>) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
-  if (post.categories.find(categoryId => categoryId === LANG_CATEGORY_ID)) {
+  if (post?.categories?.find(categoryId => categoryId === LANG_CATEGORY_ID)) {
     return <LangLayout>{children}</LangLayout>
   }
   return <CommontLayout>{children}</CommontLayout>;
