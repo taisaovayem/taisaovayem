@@ -1,13 +1,14 @@
 "use client";
 import LangPostCard from "./LangPostCard";
 import { useEffect, useRef, useState } from "react";
-import { Spinner, Flex } from "@radix-ui/themes";
+import { Spinner, Flex, Box } from "@radix-ui/themes";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
 import debounce from "lodash/debounce";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { Post, PostFilterParams, PostList as PostListType } from "@/api";
 import axios from "axios";
 import { replaceRoute } from "@/helpers";
+import Search from "./Search";
 
 type PostListProps = {
   filter: PostFilterParams;
@@ -25,6 +26,7 @@ async function getServerPostList(
 }
 
 export function LangPostList({ filter }: PostListProps) {
+  const [searchText, setSearchText] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [postList, setPostList] = useState<Post[]>([]);
@@ -55,6 +57,9 @@ export function LangPostList({ filter }: PostListProps) {
       page: currentPage + 1,
       per_page: PAGE_SIZE,
     };
+    if (searchText) {
+      _filter.search = searchText;
+    }
     const _postList = await getPosts(_filter);
     setPostList((previous) => [...previous, ..._postList]);
     setCurrentPage((previous) => previous + 1);
@@ -80,6 +85,9 @@ export function LangPostList({ filter }: PostListProps) {
       page: 1,
       per_page: PAGE_SIZE,
     };
+    if (searchText) {
+      _filter.search = searchText;
+    }
     const _postList = await getPosts(_filter);
     setPostList(_postList);
     setCurrentPage(1);
@@ -87,10 +95,15 @@ export function LangPostList({ filter }: PostListProps) {
 
   useEffect(() => {
     initPostList();
-  }, []);
+  }, [searchText]);
 
   return (
     <>
+      <Flex justify="center">
+        <Box className="w-full md:w-1/2 md:pb-8">
+          <Search onSubmit={setSearchText} />
+        </Box>
+      </Flex>
       {/* eslint-disable-next-line */}
       {/* @ts-ignore */}
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
