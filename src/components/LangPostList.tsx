@@ -56,7 +56,6 @@ export function LangPostList({ filter }: PostListProps) {
       per_page: PAGE_SIZE,
     };
     const _postList = await getPosts(_filter);
-    console.log("_postList", _postList);
     setPostList((previous) => [...previous, ..._postList]);
     setCurrentPage((previous) => previous + 1);
     return true;
@@ -82,7 +81,6 @@ export function LangPostList({ filter }: PostListProps) {
       per_page: PAGE_SIZE,
     };
     const _postList = await getPosts(_filter);
-    console.log("_postList", _postList);
     setPostList(_postList);
     setCurrentPage(1);
   }

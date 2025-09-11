@@ -22,7 +22,7 @@ export function getThumbnail(post: Post) {
 }
 
 export function getDescription(content: string) {
-  const contentSplit = content.split(/<br\s*\/?>/i);
+  const contentSplit = content.split(/<br\s*\/?>|\r?\n/gi);
   let countCharacter = 0;
   const finalContent = contentSplit.reduce((previous, current) => {
     countCharacter += convert(current).length;
