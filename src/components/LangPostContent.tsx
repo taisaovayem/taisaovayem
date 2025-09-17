@@ -12,12 +12,12 @@ type PostContentProps = {
 export function LangPostContent({ post }: PostContentProps) {
   return (
     <>
-      <Box className="h-[50vh] w-full [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)]">
+      <Box className="h-[100vh] w-full [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_70%,rgba(0,0,0,0)_100%)]">
         <img src={replaceRoute(post.jetpack_featured_media_url)} className="h-full w-full object-cover"/>
       </Box>
       <Container size="3">
         <Box
-          className="mb-8 p-4 md:p-9 relative -mt-40 bg-white dark:bg-gray-950 opacity-95 text-gray-950 dark:text-white text-lg"
+          className="mb-8 p-4 md:p-9 relative -mt-[50vh] bg-white dark:bg-gray-950 opacity-95 text-gray-950 dark:text-white text-lg"
         >
           {Boolean(post.title.rendered) && (
             <header className="mb-6">

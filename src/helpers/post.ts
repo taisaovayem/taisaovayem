@@ -31,5 +31,6 @@ export function getDescription(content: string) {
     }
     return previous;
   }, [] as string[]);
-  return finalContent.join("<br />");
+  console.log('finalContent', finalContent)
+  return finalContent.filter(Boolean).join("<br />");
 }

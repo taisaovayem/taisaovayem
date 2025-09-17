@@ -16,7 +16,7 @@ export function Footer() {
         <span className="inline-block align-middle">
           <InfoCircledIcon />
         </span>{" "}
-        Về taisaovayem
+        Giới thiệu
       </Link>
       <QuickNavigate />
     </footer>
