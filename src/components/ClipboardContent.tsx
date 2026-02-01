@@ -19,7 +19,7 @@ export const ClipboardContent = forwardRef<
 
   return (
     <div
-      className="bg-cover w-96 min-h-64 h-auto p-8 flex items-center justify-center relative bg-center"
+      className="bg-cover w-[1000 px] min-h-[600px] h-auto p-8 flex items-center justify-center relative bg-center"
       ref={ref}
     >
       <div
@@ -30,19 +30,19 @@ export const ClipboardContent = forwardRef<
         }}
       ></div>
       <div className="bg-cover absolute -left-6 -top-6 -right-6 -bottom-5 -z-0 bg-black opacity-10"></div>
-      <div className="z-10">
+      <div className={thumbnail?.length ? "z-10 w-full p-10" : "z-10 p-10"}>
         <Text
           as="div"
-          size="6"
+          size="9"
           weight="bold"
-          className="mb-4 text-white mix-blend-overlay"
+          className="mb-10 text-white mix-blend-overlay"
           dangerouslySetInnerHTML={{ __html: title }}
         />
         {html ? (
           <Text
             as="div"
-            size="2"
-            className="mix-blend-screen text-white"
+            size="8"
+            className="mix-blend-screen [&>p]:leading-[1.5] text-white [&>figure]:w-full [&>figure>img]:w-full [&>figure>img]:h-auto"
             dangerouslySetInnerHTML={{
               __html: replaceRoute(html),
             }}
