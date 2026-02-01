@@ -19,7 +19,7 @@ export const ClipboardContent = forwardRef<
 
   return (
     <div
-      className="bg-cover w-[1000 px] min-h-[600px] h-auto p-8 flex items-center justify-center relative bg-center"
+      className="bg-cover w-[1000px] min-h-[600px] h-auto p-8 flex items-center justify-center relative bg-center"
       ref={ref}
     >
       <div
