@@ -32,7 +32,6 @@ export function proxy(request: NextRequest) {
       rateLimitMap.set(ip, { count: 1, timestamp: now });
     }
   }
-console.log(`IP: ${ip}, Count: ${rateLimitMap.get(ip)?.count}`);
   return NextResponse.next();
 }
 
