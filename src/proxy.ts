@@ -7,7 +7,7 @@ const rateLimitMap = new Map<
 >();
 
 const WINDOW_SIZE = 60 * 1000; // 1 phút
-const MAX_REQUESTS = 100; // 100 request / phút
+const MAX_REQUESTS = 500; // 500 request / phút
 
 export function proxy(request: NextRequest) {
   const ip =
