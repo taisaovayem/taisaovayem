@@ -1,4 +1,4 @@
-import { api } from "./base";
+import { API_BASE, fetchAPI } from "./base";
 
 export type Post = {
   id: number;
@@ -7,14 +7,14 @@ export type Post = {
     rendered: string;
   };
   content: {
-    rendered: string; // html
+    rendered: string;
   };
-  categories: number[]; // category ids
-  tags: number[]; // tag ids
+  categories: number[];
+  tags: number[];
   excerpt: {
-    rendered: string; // html
-  },
-  jetpack_featured_media_url: string,
+    rendered: string;
+  };
+  jetpack_featured_media_url: string;
 };
 
 export type PostList = {
@@ -25,8 +25,8 @@ export type PostList = {
 };
 
 export type PostFilterParams = {
-  page?: number; // 1
-  per_page?: number; // 10
+  page?: number;
+  per_page?: number;
   categories?: string;
   tags?: string;
   search?: string;
@@ -35,22 +35,27 @@ export type PostFilterParams = {
 export const getPostList = async (
   params: PostFilterParams
 ): Promise<PostList> => {
-  const res = await api.get<Post[]>("posts", {
-    params,
+  const res = await fetch(`${API_BASE}/posts?${params.toString()}`, {
+    next: {
+      revalidate: 60 * 60 * 24,
+    },
   });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch posts");
+  }
+
+  const data: Post[] = await res.json();
+
   return {
-    items: res.data,
-    page: res.headers["x-wp-totalpages"],
-    perPage: res.headers["x-wp-per-page"],
-    total: res.headers["x-wp-total"],
+    items: data,
+    page: Number(res.headers.get("x-wp-totalpages")),
+    perPage: Number(res.headers.get("x-wp-per-page")),
+    total: Number(res.headers.get("x-wp-total")),
   };
 };
 
 export const getPostBySlug = async (slug: string): Promise<Post> => {
-  const res = await api.get<Post[]>("/posts", {
-    params: {
-      slug,
-    },
-  });
-  return res.data[0];
+  const data = await fetchAPI<Post[]>(`/posts?slug=${slug}`);
+  return data[0];
 };

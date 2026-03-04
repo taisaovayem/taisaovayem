@@ -1,4 +1,4 @@
-import { api } from "./base";
+import { fetchAPI } from "./base";
 
 type Category = {
   id: number;
@@ -8,20 +8,28 @@ type Category = {
 };
 
 type FilterParams = {
-  include?: string; // 3,7,10 lấy theo danh sách id
-  per_page?: number; // 100
-  page?: number; // 1
+  include?: string;
+  per_page?: number;
+  page?: number;
   slug?: string;
 };
 
-export const getCategoryList = async (params: FilterParams) => {
-  const res = await api.get<Category[]>("/categories", {
-    params,
+export const getCategoryList = async (
+  params: FilterParams
+): Promise<Category[]> => {
+  const searchParams = new URLSearchParams();
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined) {
+      searchParams.append(key, String(value));
+    }
   });
-  return res.data;
+
+  return fetchAPI(`/categories?${searchParams.toString()}`);
 };
 
-export const getCategoryDetail = async (id: number) => {
-  const res = await api.get<Category>(`/categories/${id}`);
-  return res.data;
+export const getCategoryDetail = async (
+  id: number
+): Promise<Category> => {
+  return fetchAPI(`/categories/${id}`);
 };

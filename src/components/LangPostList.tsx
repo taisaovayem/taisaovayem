@@ -14,7 +14,7 @@ type PostListProps = {
   filter: PostFilterParams;
 };
 
-const PAGE_SIZE = 50;
+const PAGE_SIZE = 20;
 
 async function getServerPostList(
   filter: PostFilterParams

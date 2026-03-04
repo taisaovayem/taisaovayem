@@ -1,4 +1,4 @@
-import { api } from "./base";
+import { fetchAPI } from "./base";
 
 type Tag = {
   id: number;
@@ -15,13 +15,9 @@ type FilterParams = {
 };
 
 export const getTagList = async (params: FilterParams) => {
-  const res = await api.get<Tag[]>("/tags", {
-    params,
-  });
-  return res.data;
+  return fetchAPI<Tag[]>(`/tags?${new URLSearchParams(params as Record<string, string>).toString()}`);
 };
 
 export const getTagDetail = async (id: number) => {
-  const res = await api.get<Tag>(`/tags/${id}`);
-  return res.data;
+  return fetchAPI<Tag>(`/tags/${id}`);
 };
