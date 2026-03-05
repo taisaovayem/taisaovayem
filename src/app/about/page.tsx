@@ -61,13 +61,6 @@ export default function About() {
         <Title>toku.taisaovayem.com</Title>
       </Link>
       <Paragrap>Bookmark phim siêu nhân được sưu tầm từ các nhóm dịch</Paragrap>
-      <Link href="https://ip.taisaovayem.com">
-        <Title>ip.taisaovayem.com</Title>
-      </Link>
-      <Paragrap>
-        Hiển thị public ip của bạn để sử dụng cho các ứng dụng cần dùng đến địa
-        chỉ ip
-      </Paragrap>
       <Paragrap>
         Li&ecirc;n hệ:
         <Link href="mailto: why@taisaovayem.com">why@taisaovayem.com</Link>
