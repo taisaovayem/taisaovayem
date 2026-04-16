@@ -1,5 +1,5 @@
 export const API_BASE =
-  process.env.API ?? "https://admin.taisaovayem.com/wp-json/wp/v2";
+  process.env.API ?? "http://taisaovayem-api:80/wp-json/wp/v2";
 
 export async function fetchAPI<T>(
   path: string
