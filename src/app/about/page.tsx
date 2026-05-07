@@ -57,10 +57,6 @@ export default function About() {
         <Title>rip.taisaovayem.com</Title>
       </Link>
       <Paragrap>RIP</Paragrap>
-      <Link href="https://toku.taisaovayem.com">
-        <Title>toku.taisaovayem.com</Title>
-      </Link>
-      <Paragrap>Bookmark phim siêu nhân được sưu tầm từ các nhóm dịch</Paragrap>
       <Paragrap>
         Li&ecirc;n hệ:
         <Link href="mailto: why@taisaovayem.com">why@taisaovayem.com</Link>
