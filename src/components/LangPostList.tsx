@@ -88,9 +88,12 @@ export function LangPostList({ filter }: PostListProps) {
     if (searchText) {
       _filter.search = searchText;
     }
+    setPostList([]);
+    setIsLoading(true);
     const _postList = await getPosts(_filter);
     setPostList(_postList);
     setCurrentPage(1);
+    setIsLoading(false);
   }
 
   useEffect(() => {
