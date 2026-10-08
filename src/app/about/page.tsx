@@ -57,6 +57,10 @@ export default function About() {
         <Title>rip.taisaovayem.com</Title>
       </Link>
       <Paragrap>RIP</Paragrap>
+      <Link href="https://invite.taisaovayem.com">
+        <Title>invite.taisaovayem.com</Title>
+      </Link>
+      <Paragrap>Thiệp mời điện tử</Paragrap>
       <Paragrap>
         Li&ecirc;n hệ:
         <Link href="mailto: why@taisaovayem.com">why@taisaovayem.com</Link>
