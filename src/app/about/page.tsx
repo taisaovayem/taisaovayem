@@ -46,6 +46,12 @@ export default function About() {
         Trang bắt đầu dành cho trình duyệt web với thông báo còn bao lâu nữa thì
         đến Tết
       </Paragrap>
+      <Link href="https://congduc.taisaovayem.com">
+        <Title>congduc.taisaovayem.com</Title>
+      </Link>
+      <Paragrap>
+        Gõ mõ tụng kinh tích lũy công đức
+      </Paragrap>
       <Link href="https://bio.taisaovayem.com">
         <Title>bio.taisaovayem.com</Title>
       </Link>
