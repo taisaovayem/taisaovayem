@@ -52,6 +52,12 @@ export default function About() {
       <Paragrap>
         Gõ mõ tụng kinh tích lũy công đức
       </Paragrap>
+      <Link href="https://qr.taisaovayem.com">
+        <Title>qr.taisaovayem.com</Title>
+      </Link>
+      <Paragrap>
+        Tạo nhanh mã QR
+      </Paragrap>
       <Link href="https://bio.taisaovayem.com">
         <Title>bio.taisaovayem.com</Title>
       </Link>
