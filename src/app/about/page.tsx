@@ -58,6 +58,12 @@ export default function About() {
       <Paragrap>
         Tạo nhanh mã QR
       </Paragrap>
+      <Link href="https://youtube.taisaovayem.com">
+        <Title>youtube.taisaovayem.com</Title>
+      </Link>
+      <Paragrap>
+        Nghe youtube
+      </Paragrap>
       <Link href="https://bio.taisaovayem.com">
         <Title>bio.taisaovayem.com</Title>
       </Link>
